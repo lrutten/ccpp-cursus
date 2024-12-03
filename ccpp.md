@@ -4,6 +4,8 @@ author: Leo Rutten
 date: 3/12/2024
 ---
 
+# Deel C
+
 # Voorwoord
 
 Voor het academiejaar 2017-2018 is deze tekst de cursus voor het vak
@@ -92,8 +94,7 @@ allang kunnen vervangen worden door de STL bibliotheek van C++. Voor de
 volledigheid van de tekst over C zijn deze hoofdstukken toch opgenomen
 in deel 1.
 
-Kennismaking met C
-==================
+# Kennismaking met C
 
 De programmeertaal C vindt zijn oorsprong bij het ontstaan van het
 operating systeem UNIX. De eerste versie van UNIX was in assembler
@@ -119,48 +120,38 @@ kunnen gehercompileerd worden voor verschillende processorarchitecturen.
 Een goed voorbeeld hiervan is de Linux kernel. Deze draait zowat op elk
 platform.
 
-Geschiedenis
-------------
+## Geschiedenis
 
 Dit zijn enkele markante punten uit de geschiedenis van C:
 
 1976
-
 :   De BCPL taal wordt ontworpen door Martin Richards.
 
 1970
-
 :   De eerste versie UNIX in B door Ken Thompson geschreven, verschijnt.
 
 1972
-
 :   De C taal wordt ontworpen voor versie UNIX op DEC PDP11 door Dennis
     Ritchie.
 
 1978
-
 :   Het boek 'The C programming language' door Brian Kernighan & Dennis
     Ritchie geschreven verschijnt bij Prentice Hall.
 
 1982
-
 :   ANSI start de standaardisatie van C.
 
 1986
-
 :   Een nieuwe uitgave van 'The C programming language' verschijnt.
 
 1989
-
 :   De ANSI C standaard verschijnt. In deze standaard worden de
     functieprototypes ingevoerd.
 
 1999
-
 :   De C99 standaard verschijnt.
 
 2011
-
 :   De C11 standaard verschijnt. Deze standaard zorgt voor een
     verbeterde compatibiliteit met C++.
 
@@ -171,48 +162,44 @@ compiler kent.
 
 Dit zijn de kenmerken van C:
 
--   algemeen
+- algemeen
+- flexibel
+- overdraagbaar
+- laat programmeren op laag niveau toe
+- kan dus assembler vervangen
+- gebaseerd op types
+- veel verspreid
+- niet voor beginners
 
--   flexibel
-
--   overdraagbaar
-
--   laat programmeren op laag niveau toe
-
--   kan dus assembler vervangen
-
--   gebaseerd op types
-
--   veel verspreid
-
--   niet voor beginners
-
-Eerste voorbeelden
-------------------
+## Eerste voorbeelden
 
 Als kennismaking met de taal C beginnen we met enkele eenvoudige
 programma's. Ze zijn bijna zonder verdere uitleg te begrijpen.
 
 We starten met een eerste voorbeeld:
 
-    #include <stdio.h>
+#include <stdio.h>
 
-    int main() // een eenvoudig programma
-    {
-       int num;
+~~~~{.C}
+int main() // een eenvoudig programma
+{
+   int num;
 
-       num = 1;
-       printf("dit is");
-       printf(" een eenvoudig programma\n");
-       printf("%d is het eerste gehele getal\n",  num );
+   num = 1;
+   printf("dit is");
+   printf(" een eenvoudig programma\n");
+   printf("%d is het eerste gehele getal\n",  num );
 
-       return 0;
-    }
+   return 0;
+}
+~~~~
 
 Dit programma zet de volgende tekst op het scherm:
 
-    dit is een eenvoudig programma
-    1 is het eerste gehele getal
+~~~~
+dit is een eenvoudig programma
+1 is het eerste gehele getal
+~~~~
 
 Als we dit programma nalezen, vinden we notaties die specifiek zijn voor
 C. De regel `#include <stdio.h>` geeft aan dat een ander bestand in dit
@@ -240,7 +227,9 @@ slaan. Je kan commentaar voor één regel ook starten met `//`.
 
 Als eerste opdracht in dit blok treffen we een declaratie aan.
 
-    int num;
+~~~~{.C}
+int num;
+~~~~
 
 Hiermee wordt aangegeven dat het programma gebruik maakt van een
 variabele met de naam `num`. Deze variabele kan gehele getallen opslaan.
@@ -252,7 +241,7 @@ type kan opslaan.
 
 Met een toekenning wordt een waarde in een variabele geplaatst.
 
-    num = 1;
+num = 1;
 
 Deze toekenningsopdracht plaatst de waarde 1 in de variabele.
 
@@ -271,18 +260,20 @@ Het `%` teken gevolgd door een letter specificeert het formaat.
 
 We geven een tweede voorbeeld waarin een berekening voorkomt:
 
-    #include <stdio.h>
+~~~~{.C}
+#include <stdio.h>
 
-    int main()
-    {
-       int voet,vadem;
+int main()
+{
+   int voet,vadem;
 
-       vadem = 2;
-       voet = 6 * vadem;
-       printf("in %d vadem zijn er %d voet\n",vadem,voet);
+   vadem = 2;
+   voet = 6 * vadem;
+   printf("in %d vadem zijn er %d voet\n",vadem,voet);
        
-       return 0;
-    }
+   return 0;
+}
+~~~~
 
 Bij de tweede toekenning van dit programma zien we aan de rechterzijde
 een uitdrukking. We kunnen niet alleen een waarde toekennen aan een
@@ -295,6 +286,7 @@ overeenkomen met het aantal percentaanduidingen.
 
 En nog een voorbeeld:
 
+~~~~{.C}
     #include <stdio.h>
 
     void help()
@@ -310,6 +302,7 @@ En nog een voorbeeld:
 
        return 0;   
     }
+~~~~
 
 In dit programma treffen we 2 functies[^5] aan: `main()` en `help()`.
 Het programma start per definitie met de uitvoering van `main()`. Deze
@@ -323,8 +316,7 @@ in een functie. Als we de functie met zijn naam oproepen dan worden zijn
 opdrachten uitgevoerd. We besparen schrijfwerk door opdrachten die veel
 voorkomen in een programma, onder te brengen in een functie.
 
-Werken met gegevens
-===================
+# Werken met gegevens
 
 Bij de vorige voorbeelden hebben we telkens het type int gebruikt om de
 variabelen te declareren. Dit type slaat gehele getallen op. We zien nu
@@ -335,8 +327,7 @@ het type `float` voor berekeningen gebruiken, dan moeten we er rekening
 mee houden dat de rekentijden langer zijn en de nauwkeurigheid groter is
 dan bij het type `int`.
 
-Een voorbeeld met verschillende types
--------------------------------------
+## Een voorbeeld met verschillende types
 
 Het volgende voorbeeld maakt gebruik van de types `float` en `char`.
 
@@ -386,8 +377,7 @@ tweede plaatst een `float` getal op het scherm met een breedte van 10 en
 2 cijfers na de decimale punt. Elke `%` aanduiding heeft een
 corresponderende variabele.
 
-Gegevens: variabelen en constanten
-----------------------------------
+## Gegevens: variabelen en constanten
 
 Met een computer kunnen we gegevens verwerken. Dit betekent dat een
 computer gegevens opslaat en daarna manipuleert. In een programma doen
@@ -406,7 +396,9 @@ typenaam variabelenaam;
 In plaats van een enkele naam kunnen we ook meerdere namen bij een type
 plaatsten.
 
+~~~~{.C}
     int a,b,c;
+~~~~
 
 Variabelenamen bestaan uit maximum 63 letters en cijfers[^6]. Er mogen
 enkel letters en cijfers (de underscore \_ is een letter) in voorkomen
@@ -428,16 +420,20 @@ Deze waarden gelden voor 32 bit Linux.
 
 Voorbeeld:
 
+~~~~{.C}
     int regendagen;
     int uren,minuten;
 
     uren = 5;
     scanf("%d",&minuten);
+~~~~
 
 Bij de declaratie zelf kunnen de variabelen geïnitialiseerd worden.
 
+~~~~{.C}
     int regendagen = 25;
     int uren,minuten = 3;
+~~~~
 
 `minuten` krijgt de waarde 3 in het laatste voorbeeld, `uren` wordt niet
 geïnitialiseerd. Het is wellicht beter om om elke declaratie op een
@@ -460,6 +456,7 @@ scherm geplaatst worden. Het resultaat is dan decimaal, octaal of
 hexadecimaal. In het voorbeeld wordt driemaal dezelfde waarde in een
 ander talstelsel op het scherm geplaatst.
 
+~~~~{.C}
     int main()
     {
        int x = 100;
@@ -468,6 +465,7 @@ ander talstelsel op het scherm geplaatst.
 
        return 0;
     }
+~~~~
 
 Door middel van adjectieven `short`, `long` en `unsigned` kan het bereik
 van het `int` type aangepast worden. Het `int` type komt gewoonlijk
@@ -513,7 +511,9 @@ Op een 32 bit Linux levert de `gcc` compiler de volgende mogelijkheden:
 
 Gehele getallen die eindigen met de letter `L` zijn `long` constanten:
 
+~~~~{.C}
     123L 045L 0x1234L
+~~~~
 
 Dit achtervoegsel mag bij decimale, octale en hexadecimale constanten
 toegepast worden.
@@ -549,6 +549,7 @@ Geen
 Bij schermuitgave moet precies aangeduid worden van welke soort elke
 variabele is en op welke wijze deze variabele op het scherm komt.
 
+~~~~{.C}
     int main()
     {
        unsigned un = 40000;
@@ -559,6 +560,7 @@ variabele is en op welke wijze deze variabele op het scherm komt.
        
        return 0;
     }
+~~~~
 
 We zien hier nieuwe formaataanduidingen. `%u` gebruiken we bij tekenloze
 `int` variabelen en `%l` gebruiken we bij `long` variabelen. De
@@ -582,14 +584,18 @@ dat er een juiste overeenkomst is tussen percentaanduiding en het type.
 Variabelen van het `char` type worden gebruikt voor de opslag van
 tekens. We zien hier een voorbeeld van een declaratie:
 
+~~~~{.C}
     char letter,teken;
     char cijfer;
+~~~~
 
 Dit type variabele gebruikt 1 byte geheugen en hierin wordt het teken
 opgeslagen als een getal van -128 tot +127. Constanten van het `char`
 type worden tussen 2 aanhalingstekens genoteerd.
 
+~~~~{.C}
     'A' 'c' '0'
+~~~~
 
 Tekens met een speciale betekenis worden met een backslash voorgesteld.
 
@@ -653,14 +659,17 @@ tussen de backslash en het getal geplaatst worden.
 
 code in octaal: `'\ddd'`
 
+~~~~{.C}
     '\123'
 
 code in hexadecimaal: `'\xddd'`
 
+~~~~{.C}
     '\x1b'
 
 We kunnen deze speciale tekens ook in strings toepassen.
 
+~~~~{.C}
     printf("\007wakker worden!\n");
 
 In dit voorbeeld sturen we de code voor het belsignaal naar het scherm.
@@ -668,6 +677,7 @@ Het teken `'\n'` plaatst de cursor op het begin van de volgende regel.
 
 `char` variabelen kunnen via in- en uitvoer verwerkt worden.
 
+~~~~{.C}
     int main()
     {
        char ch;
@@ -678,6 +688,7 @@ Het teken `'\n'` plaatst de cursor op het begin van de volgende regel.
 
        return 0;
     }
+~~~~
 
 In dit voorbeeld wordt `%c` gebruikt bij in- en uitvoer. Het ingelezen
 teken wordt tweemaal op het scherm geplaatst: éénmaal als code en
@@ -714,9 +725,11 @@ op een 32 Linux platform.
 
 Deze types kunnen zo in een declaratie gebruikt worden:
 
+~~~~{.C}
     float pi     = 3.14159;
     double planck = 6.63e-34;
     long double getal;
+~~~~
 
 Wanneer een getalconstante met een decimale punt of een exponent
 genoteerd wordt, is dit een `double` constante. Wanneer het suffix `f`
@@ -724,11 +737,13 @@ of `F` wordt toegevoegd is de constante van het type `float`. Indien het
 suffix `l` of `L` wordt bijgevoegd dan is de constante van het type
 `long double`.
 
+~~~~{.C}
     123.45F
     .556L
     46.
     12e-3F
     15.5E20
+~~~~
 
 Deze constanten zijn allemaal van het reële type en kunnen aan een
 `long double`, `double` of een `float` variabele toegekend worden.
@@ -736,11 +751,11 @@ Deze constanten zijn allemaal van het reële type en kunnen aan een
 Er zijn 3 mogelijkheden om `double` en `float` variabelen op het scherm
 te plaatsen:
 
-`%f` gewone notatie
+* `%f` gewone notatie
 
-`%e` exponent notatie
+* `%e` exponent notatie
 
-`%g` gewone of exponent notatie
+* `%g` gewone of exponent notatie
 
 Als we `%g` gebruiken wordt indien mogelijk het getal in de gewone
 notatie op het scherm gedrukt; indien de exponent te groot of te klein
@@ -748,6 +763,7 @@ verschijnt het getal in de exponent notatie op het scherm.
 
 Voorbeeld:
 
+~~~~{.C}
     int main()
     {
        float getal = 32000.0;
@@ -756,16 +772,19 @@ Voorbeeld:
 
        return 0;
     }
+~~~~
 
 ### Het opsommingstype
 
 Het opsommingstype laat toe zelf symbolen als waarde te definiëren.
 
+~~~~{.C}
     enum dagen =
     {
        zondag,maandag,dinsdag,woensdag,donderdag,
        vrijdag,zaterdag
     } vandaag, morgen;
+~~~~
 
 De variabelen `vandaag` en `morgen` zijn van het type `enum dagen`. We
 kunnen hierin de namen van de dagen als waarde opslaan. Deze waarden
@@ -774,15 +793,19 @@ het volgende de waarde 1 enzovoort. De uitdrukking `enum dagen` kan
 verder in het programma nog gebruikt worden voor de declaratie van
 andere variabelen.
 
+~~~~{.C}
     enum dagen gisteren;
     gisteren = woensdag;
+~~~~
 
 We kunnen ook zelf een waarde koppelen aan elk symbool.
 
+~~~~{.C}
     enum jaar
     {
        Guldensporen=1302, Bastille=1789, VanGogh=1890
     } feit;
+~~~~
 
 ### De `sizeof()` functie
 
@@ -791,6 +814,7 @@ Tot slot nog een voorbeeld dat gebruik maakt van de ingebouwde functie
 het type of de variabele die doorgegeven wordt. Het type van het
 resultaat is `int` (dit is afhankelijk van de implementatie).
 
+~~~~{.C}
     #include <stdio.h>
 
     int main()
@@ -806,10 +830,12 @@ resultaat is `int` (dit is afhankelijk van de implementatie).
        
        return 0;
     }
+~~~~
 
 De output van het bovenstaande programma is verkregen op een 32 bit
 Linux machine.
 
+~~~~{.C}
     lengte char: 1
     lengte short int: 2                                                                
     lengte int: 4
@@ -818,9 +844,9 @@ Linux machine.
     lengte float: 4
     lengte double: 8
     lengte long double: 12
+~~~~
 
-Character strings, `#define`, `printf()`,`scanf()`
-==================================================
+# Character strings, `#define`, `printf()`,`scanf()`
 
 Met constanten bedoelen we het koppelen van een naam met een constante
 waarde. De `#define` opdracht wordt hiervoor gebruikt.
@@ -828,20 +854,23 @@ waarde. De `#define` opdracht wordt hiervoor gebruikt.
 In dit hoofdstuk hebben we het verder over strings, `printf()` en
 `scanf()`.
 
-Strings
--------
+## Strings
 
 Een string is een aaneenschakeling van tekens. Wanneer we een tekst op
 het scherm plaatsen, geven we een stringconstante door aan `printf()`.
 Met stringconstanten hebben we al kennis gemaakt.
 
+~~~~{.C}
     printf("abcde");
+~~~~
 
 De stringconstante `"abcde"` wordt gevormd door een tekst tussen dubbele
 aanhalingstekens. In feite worden de afzonderlijke tekens als een `char`
 constante opgeslagen.
 
+~~~~{.C}
     'a' 'b' 'c' 'd' 'e' '\0'
+~~~~
 
 Als laatste teken wordt nog de code 0 bijgevoegd. Dit geeft het einde
 van de string aan. Een stringconstante vraagt dus altijd 1 byte meer
@@ -853,6 +882,7 @@ beëindigen.
 
 Hier is een voorbeeld met strings en constanten.
 
+~~~~{.C}
     /* 
       De menselijke densiteit in kg/m3 
      */
@@ -878,10 +908,13 @@ Hier is een voorbeeld met strings en constanten.
        
        return 0;
     }
+~~~~
 
 In dit programma treffen we een nieuw type variabele aan: array.
 
+~~~~{.C}
     char naam[40];
+~~~~
 
 Dit is de declaratie van de variabele `naam`. Hierdoor wordt er
 geheugenruimte gereserveerd voor 40 tekens. De `scanf()` functie zorgt
@@ -911,15 +944,16 @@ string. De functie telt de tekens totdat de code 0 bereikt wordt. In het
 programma wordt `strlen()` gebruikt om na te gaan hoeveel tekens
 ingegeven zijn.
 
-Tekstvervanging met `#define`
------------------------------
+## Tekstvervanging met `#define`
 
 Bij de berekening van het volume zien we het symbool `DENSITEIT`. Dit is
 een constante die in de eerste programmaregel gedeclareerd wordt met
 `#define`. In C is het mogelijk om een tekst, die veel voorkomt, te
 koppelen aan een naam. Hiervoor dient de `#define` opdracht.
 
+~~~~{.C}
     #define NAAM tekst
+~~~~
 
 In de eerste fase van de vertaling worden alle namen die door `#define`
 zijn vastgelegd, vervangen door hun tekst. Deze taak wordt uitgevoerd
@@ -929,8 +963,10 @@ C programma ---&gt; preprocessor ---&gt; compiler
 
 Hier zijn nog enkele voorbeelden:
 
+~~~~{.C}
     #define PI 3.14159
     #define DOLLAR '$'
+~~~~
 
 De namen van deze constanten zijn in hoofdletters. Dit is niet
 verplicht, maar deze conventie wordt door veel C programmeurs gebruikt
@@ -942,6 +978,7 @@ tekstvervanging. Telkens als de preprocessor een naam tegenkomt die met
 de bijbehorende tekst. Men kan zelfs een hele opdracht bij een naam
 onderbrengen.
 
+~~~~{.C}
     char slot[] = "tot ziens!";
 
     int main()
@@ -959,12 +996,12 @@ onderbrengen.
        
        return 0;
     }
+~~~~
 
 Hiermee zien we dat de stringarray `slot` een extra byte nodig heeft
 voor de code 0.
 
-De conversietekens bij `printf()`
----------------------------------
+## De conversietekens bij `printf()`
 
 We bespreken hier de volledige mogelijkheden van de uitvoer met de
 `printf()` functie.
@@ -1122,8 +1159,7 @@ worden:
 
 :   `long double` in plaats van `double`
 
-De conversietekens bij `scanf()`
---------------------------------
+## De conversietekens bij `scanf()`
 
 Bij de `scanf()` functie wordt de invoer van het toetsenbord verwerkt.
 De conversie wordt bepaald door de conversietekens in de formaatstring.
@@ -1257,8 +1293,7 @@ De volgende conversietekens kunnen bij `scanf()` gebruikt worden:
 
     Er vindt geen toekenning plaats.
 
-De toekenning, operatoren en uitdrukkingen
-==========================================
+# De toekenning, operatoren en uitdrukkingen
 
 De toekenning is een essentieel element bij de imperatieve talen. Met
 deze opdracht kunnen we een waarde opslaan in een variabele. Zolang er
@@ -1272,6 +1307,7 @@ elkaar worden gecombineerd door operatoren.
 Het volgende programma toont hoe we met behulp van operatoren en
 uitdrukkingen een waarde kunnen toekennen aan een variabele.
 
+~~~~{.C}
     int main()
     {
        float celsius,fahrenheit;
@@ -1287,6 +1323,7 @@ uitdrukkingen een waarde kunnen toekennen aan een variabele.
        }
        return 0;
     }
+~~~~
 
 Dit programma plaatst een omzettingstabel van graden Celsius naar graden
 Fahrenheit op het scherm. Alle Celsius waarden van 0 tot 100 worden in
@@ -1301,8 +1338,7 @@ verschijnt, is de waarde 0. De laatste is 100. Hierna wordt de variabele
 
 We bespreken de volgende punten:
 
-Toekenning
-----------
+## Toekenning
 
 De algemene vorm van een toekenning is:
 
@@ -1312,17 +1348,20 @@ De waarde van de uitdrukking wordt uitgerekend en dan in de variabele
 geplaatst. Er kan ook een waarde aan meerdere variabelen toegekend
 worden.
 
+~~~~{.C}
     a = b = c = 1;
+~~~~
 
 Bij deze toekenning wordt eerst `c` 1, daarna `b` en dan pas `a`.
 
-Rekenkundige operatoren
------------------------
+## Rekenkundige operatoren
 
 Rekenkundige bewerkingen kunnen in uitdrukkingen toegepast worden. Als
 basisoperatoren hebben we `+`, `-`, `*` en `/`. In het voorbeeld
 
+~~~~{.C}
     (-b + c)/a
+~~~~
 
 is `-` een unaire operator (werkt op 1 operand), `+` en `/` zijn binaire
 operatoren (werkt op 2 operanden). Bij de deling wordt dezelfde operator
@@ -1360,8 +1399,7 @@ meerdere operatoren van dezelfde prioriteit voorkomen.
   laag         `=`              van rechts naar links
   ------------ ---------------- -----------------------
 
-Met 1 verhogen of verlagen ( `++` en `--` )
--------------------------------------------
+## Met 1 verhogen of verlagen ( `++` en `--` )
 
 C kent een speciale notatie om een variabele met 1 te verhogen of te
 verlagen. Dit kan handig zijn zeker als de uitdrukking die de variabele
@@ -1369,23 +1407,31 @@ voorstelt lang is.
 
 Hier zijn enkele voorbeelden:
 
+~~~~{.C}
     a++;
     a--;
+~~~~
 
 ofwel
 
+~~~~{.C}
     ++a;
     --a;
+~~~~
 
 De operatoren `++` en `--` doen hetzelfde als:
 
+~~~~{.C}
     a = a + 1;
     a = a - 1;
+~~~~
 
 Een `++` of `--` is soms moeilijk te interpreteren. Wat betekent de
 volgende uitdrukking?
 
+~~~~{.C}
     x*y++
+~~~~
 
 Dit is hetzelfde als `x*(y++)` en dus niet `(x*y)++`. We zonderen `y++`
 af met haken omdat `++` een hogere prioriteit heeft dan `*`. De tweede
@@ -1397,19 +1443,24 @@ worden. Dit betekent vooraf of achteraf verhogen.
 
 -   postfix notatie
 
+~~~~{.C}
         i = 0; j = i++;/* j wordt 0 */
+~~~~
 
     eerst waarde gebruiken en daarna verhogen
 
 -   prefix notatie
 
+~~~~{.C}
         m = 0; n = ++m;/* n wordt 1 */
+~~~~
 
     eerst verhogen en daarna waarde gebruiken
 
 In het volgende voorbeeld wordt de verhoging van i in de voorwaarde
 ingebouwd.
 
+~~~~{.C}
     int main()
     {
        int i = 0;
@@ -1421,13 +1472,13 @@ ingebouwd.
 
        return 0;
     }
+~~~~
 
 Deze notatie levert kortere programma's op. Het nadeel is dat deze
 programma's minder goed leesbaar zijn en dat er soms ongewenste
 zijeffecten worden gecreëerd.
 
-Bitoperatoren
--------------
+## Bitoperatoren
 
 Weinig programmeertalen hebben operatoren voor bewerkingen op bitniveau.
 De taal C vormt hierop een uitzondering. Dit is begrijpelijk als men
@@ -1458,15 +1509,21 @@ twee operands.
 
 Om bit 3 in een variabele op 1 te zetten schrijven we:
 
+~~~~{.C}
     x = x | 010;
+~~~~
 
 Om dezelfde bit terug op 0 te zetten schrijven we:
 
+~~~~{.C}
     x = x & 0177767;
+~~~~
 
 ofwel
 
+~~~~{.C}
     x = x & ~010;
+~~~~
 
 De eerste vorm kan enkel gebruikt worden voor een variabele van het type
 `int`. De tweede vorm kan voor elk geheel type gebruikt worden[^10].
@@ -1490,8 +1547,7 @@ bij sommige implementaties wordt in dit geval ook een nul ingeschoven.
 De operator `~` zorgt voor de omkering van alle bits van het getal. Een
 0 wordt 1 en een 1 wordt 0.
 
-Samentrekking van toekenning en operator
-----------------------------------------
+## Samentrekking van toekenning en operator
 
 Dit zijn kortere vormen voor toekenningen.
 
@@ -1512,40 +1568,47 @@ Ook deze notaties leveren kortere programma's op.
 
 Let wel op de prioriteiten:
 
+~~~~{.C}
     a *= b + 2;
+~~~~
 
 betekent
 
+~~~~{.C}
     a = a * (b + 2);
+~~~~
 
 en niet
 
+~~~~{.C}
     a = a * b + 2;
+~~~~
 
-Uitdrukkingen
--------------
+## Uitdrukkingen
 
 Dit is een combinatie van bewerkingen, constanten en variabelen. Een
 uitdrukking stelt steeds een waarde voor. Deze waarde kan berekend
 worden door de bewerkingen volgens hun prioriteiten uit te rekenen.
 Enkele voorbeelden:
 
+~~~~{.C}
     5
     -125
     1 + 1
     a = 3
     b = ++b % 4
     c > 3.14
+~~~~
 
 Ook de toekenning stelt een waarde voor. Dit is de waarde die aan de
 variabele toegekend wordt.
 
-Opdrachten
-----------
+## Opdrachten
 
 Opdrachten zijn de bouwstenen van een programma. Elke opdracht voert een
 actie uit.
 
+~~~~{.C}
     /* de som van de eerste 20 getallen */
     int main()
     {
@@ -1561,30 +1624,34 @@ actie uit.
 
        return 0;
     }
+~~~~
 
 Elke opdracht wordt met een `;` afgesloten.
 
 Een samengestelde opdracht bestaat uit meerdere opdrachten tussen `{` en
 `}`.
 
+~~~~{.C}
     while (i++ < 100)
        j = i * i; // alleen deze opdracht in herhaling
     printf("%d\n",j);
+~~~~
 
 In het vorige voorbeeld hoort er bij de `while` slechts een opdracht. In
 het volgend voorbeeld plaatsen we twee opdrachten bij de `while`.
 
+~~~~{.C}
     while (i++ < 100)
     {
        j = i * i;
        printf("%d\n",j);
     }
+~~~~
 
 Probeer altijd de accoladen `{` en `}` te gebruiken bij de
 controlestructuren. Dit levert beter leesbare programma's op.
 
-Typeomzetting
--------------
+## Typeomzetting
 
 ### Automatische omzetting
 
@@ -1601,28 +1668,30 @@ ontvangt. Dit betekent dus een promotie of degradering. Dit laatste kan
 problemen geven, wanneer de waarde niet in het bereik past. In dit geval
 kan de compiler een waarschuwing geven.
 
+~~~~{.C}
     char k;
 
     k = 200 + 321;
     k = 2.3e45;
+~~~~
 
 ### cast bewerking
 
 Dit is een geforceerde omzetting.
 
+~~~~{.C}
     int m;
 
     m = 1.6 + 1.5;/* geeft 3 */
     m = (int) 1.6 + (int) 1.5;/* geeft 2 */
+~~~~
 
 Het type wordt tussen haken voor de om te zetten waarde geplaatst. De
 omzetting `(int)` geeft afkapping en geen afronding.
 
-Keuze maken
-===========
+# Keuze maken
 
-De `if` opdracht
-----------------
+## De `if` opdracht
 
 Met de `if` opdracht kunnen we de uitvoering van het programma
 beïnvloeden. Afhankelijk van een voorwaarde wordt de ene of de andere
@@ -1631,6 +1700,7 @@ opdracht uitgevoerd.
 In het volgende voorbeeld wordt de `if` gebruikt om na te gaan of een
 getal oneven is.
 
+~~~~{.C}
     void main()
     {
        int teller = 0;
@@ -1645,11 +1715,14 @@ getal oneven is.
        }
        printf("de som van de oneven getallen is %d\n",som);
     }
+~~~~
 
 De algemene vorm is:
 
+~~~~{.C}
     if (uitdrukking)
        opdracht
+~~~~
 
 Het resultaat van de uitdrukking bepaalt of de opdracht al dan niet
 uitgevoerd wordt.
@@ -1661,29 +1734,36 @@ niet 0 : uitvoeren
 Het is mogelijk om meerdere opdrachten bij een `if` te plaatsen. We
 plaatsen de opdrachten tussen accolades.
 
+~~~~{.C}
     if (a == b)
     {
        printf("twee gelijke getallen:\n");
        printf("%d en %d\n", a, b);
     }
+~~~~
 
 We kunnen ook een opdracht laten uitvoeren als de voorwaarde niet waar
 is. Dit wordt aangegeven door het woord `else`.
 
+~~~~{.C}
     if (a == 0)
        printf("het getal is nul\n");
     else
        printf("het getal is niet nul\n");
+~~~~
 
 De algemene vorm is:
 
+~~~~{.C}
     if (uitdrukking)
        opdracht
     else
        opdracht
+~~~~
 
 Als opdracht bij een `if` of `else` kan een andere `if` gebruikt worden.
 
+~~~~{.C}
     if (a == 0)
     {
        printf("het getal is nul\n");
@@ -1699,10 +1779,12 @@ Als opdracht bij een `if` of `else` kan een andere `if` gebruikt worden.
           printf("het getal is negatief\n");
        }
     }
+~~~~
 
 Indien we veel `if` opdrachten met elkaar combineren, kunnen we de
 insprong beter weglaten.
 
+~~~~{.C}
     if (bedrag < 1000)
        korting = 0;
     else if (bedrag < 2500)
@@ -1714,6 +1796,7 @@ insprong beter weglaten.
     else
        korting = 10;
     bedrag *= 1 - korting/100;
+~~~~
 
 De structuur in het vorige voorbeelden komt in praktijk veel voor. In
 deze structuur wordt één opdracht uit vele uitgevoerd.
@@ -1721,11 +1804,13 @@ deze structuur wordt één opdracht uit vele uitgevoerd.
 Wanneer een `else` volgt na meerdere `if` opdrachten, kunnen we ons
 afvragen bij welke `if` deze `else` hoort.
 
+~~~~{.C}
     if (getal > 5)
     if (getal < 10)
        printf("goed\n");
     else
        printf("slecht\n");
+~~~~
 
 Bij dit programma zouden we kunnen denken dat de `else` bij de eerste
 `if` hoort, maar deze interpretatie is fout. Een `else` hoort steeds bij
@@ -1733,15 +1818,18 @@ de laatste `else`-loze `if`.
 
 Dit is de verbeterde versie:
 
+~~~~{.C}
     if (getal > 5)
        if (getal < 10)
           printf("goed\n");
        else
           printf("slecht\n");
+~~~~
 
 Als we de `else` toch bij de eerste `if` willen plaatsen, dan kan dit
 zo:
 
+~~~~{.C}
     if (getal > 5)
     {
        if (getal < 10)
@@ -1749,10 +1837,12 @@ zo:
     }
     else
        printf("slecht\n");
+~~~~
 
 Opnieuw moeten we stellen dat het beter is om de accolades altijd te
 schrijven. Het laatste voorbeeld wordt dan uiteindelijk:
 
+~~~~{.C}
     if (getal > 5)
     {
        if (getal < 10)
@@ -1764,19 +1854,21 @@ schrijven. Het laatste voorbeeld wordt dan uiteindelijk:
     {
        printf("slecht\n");
     }
+~~~~
 
-Relationele operatoren
-----------------------
+## Relationele operatoren
 
 Met deze operatoren kunnen we uitdrukkingen schrijven die vergelijkingen
 uitvoeren.
 
+~~~~{.C}
     <  kleiner dan
     >  groter dan
     <= kleiner dan of gelijk aan
     >= groter dan of gelijk aan
     == gelijk aan
     != verschillend van
+~~~~
 
 Alleen waarden van de types `(un)signed char`, `short`, `int`, `long`,
 `pointer`, `float` en `double` kunnen met elkaar vergeleken worden.
@@ -1785,7 +1877,9 @@ Het resultaat van deze vergelijkingen is 1 (waar) of 0 (niet waar); het
 resultaat is van het type `int`. C kent dus geen boolse constanten of
 variabelen. We kunnen dit uitproberen met de volgende opdracht.
 
+~~~~{.C}
     printf("waar %d, niet waar %d\n", 5>1, 0!=0);
+~~~~
 
 Dit voorbeeld toont dat we gehele getallen krijgen als resultaat van
 vergelijkingen.
@@ -1801,7 +1895,9 @@ voorkomende fout, die niet door alle compilers gesignaleerd worden.
 Deze twee operatoren worden verschillend geschreven omdat ze
 tegelijkertijd bij een `if` gebruikt kunnen worden.
 
+~~~~{.C}
     if ((a = b) == 0)
+~~~~
 
 Deze opdracht plaatst eerst de inhoud van `b` in `a` en test dan of deze
 waarde gelijk is aan 0. `a = b` staat tussen haken omdat de toekenning
@@ -1819,12 +1915,12 @@ De prioriteit van relationele operatoren is lager dan die van
 rekenkundige operatoren. De uitdrukking `a + b ==
                 0` kunnen we dus als `(a + b) == 0` interpreteren.
 
-Logische operatoren
--------------------
+## Logische operatoren
 
 Met deze operatoren kunnen we meerdere voorwaarden logisch met elkaar
 koppelen.
 
+~~~~{.C}
     // tel kleine letters in een regel
     int main()
     {
@@ -1840,6 +1936,7 @@ koppelen.
        
        return 0;
     }
+~~~~
 
 De uitdrukking bij de `while` kent eerst een waarde toe aan de variabele
 `t`. Deze waarde komt van de functie `getchar()`. Deze functie wacht tot
@@ -1863,15 +1960,21 @@ Er zijn drie logische operatoren:
 
 De werking is:
 
+~~~~{.C}
     uitdr1 && uitdr2
+~~~~
 
 waar als beide uitdr1 en uitdr2 waar zijn
 
+~~~~{.C}
     uitdr1 || uitdr2
+~~~~
 
 waar als ofwel een van de twee ofwel beide uitdrukkingen waar zijn
 
+~~~~{.C}
     ! uitdr1
+~~~~
 
 waar als uitdr1 niet waar is
 
@@ -1880,31 +1983,39 @@ We mogen de logische operatoren niet verwarren met de bitoperatoren `&`,
 operatoren worden uitgevoerd op de getalwaarden. Bij deze laatsten is
 het alleen van belang of getal nul is of niet.
 
+~~~~{.C}
     4 && 2  // geeft 1
     4 & 2  // geeft 0
     4 || 2 // geeft 1
     4 | 2 // geeft 6
+~~~~
 
 Hier zijn nog enkele voorbeelden:
 
+~~~~{.C}
     6 > 1 && 10 == 5    // niet waar
     6 > 1 || 10 == 5   //waar
     !(3 > 9)  // waar
     of 3 <= 9
+~~~~
 
 De volgorde van evaluatie is steeds van links naar rechts. Als het
 eindresultaat al vastligt na evaluatie van de eerste uitdrukking, wordt
 de tweede niet meer geëvalueerd.
 
+~~~~{.C}
     0 && uitdr2  // geeft altijd 0
     1 || uitdr2  // geeft altijd 1
+~~~~
 
 Deze kortsluitmogelijkheid is handig om bepaalde fouten te vermijden.
 
+~~~~{.C}
     if ( n != 0 && 12/n == 2)
     {
        printf("n is 5 of 6\n");
     }
+~~~~
 
 Hier wordt de deling door `n` enkel uitgevoerd als `n` verschillend is
 van 0.
@@ -1925,20 +2036,24 @@ Let erop dat de bitoperatoren een lagere prioriteit hebben dan de
 relationele operatoren. Hierdoor moeten we in de volgende voorwaarde
 haken gebruiken.
 
+~~~~{.C}
     (x & 0x8) == 0
+~~~~
 
 Deze voorwaarde test of bit 3 nul is.
 
-Conditionele uitdrukking `?:`
------------------------------
+## Conditionele uitdrukking `?:`
 
 Deze opdracht maakt een keuze uit twee waarden afhankelijk van een
 voorwaarde.
 
+~~~~{.C}
     a = (b < 0) ? -b : b;
+~~~~
 
 We kunnen dit ook met een `if` schrijven.
 
+~~~~{.C}
     if (b < 0)
     {
        a = -b;
@@ -1947,6 +2062,7 @@ We kunnen dit ook met een `if` schrijven.
     {
        a = b;
     }
+~~~~
 
 De conditionele uitdrukking bestaat uit:
 
@@ -1958,14 +2074,16 @@ is het resultaat uitdr3.
 Tenslotte nog een voorbeeld waarbij twee getallen in stijgende volgorde
 op het scherm geplaatst worden.
 
+~~~~{.C}
     printf("%d,%d\n", (a > b) ? b : a, (a > b) ? a : b );
+~~~~
 
-Meerdere keuzemogelijkheden: `switch`
--------------------------------------
+## Meerdere keuzemogelijkheden: `switch`
 
 Wanneer we een keuze uit meerdere mogelijkheden maken, dan is de
 `switch` opdracht de beste oplossing.
 
+~~~~{.C}
     int main()
     {
        char letter;
@@ -1998,6 +2116,7 @@ Wanneer we een keuze uit meerdere mogelijkheden maken, dan is de
        
        return 0;
     }
+~~~~
 
 Dit programma leest een letter in en voert dan een actie uit die bij
 deze letter hoort. Dit wordt herhaald tot een `#` ingegeven wordt. De
@@ -2010,6 +2129,7 @@ voor elke ingegeven letter een `printf()` opdracht uitgevoerd.
 
 Dit is de algemene vorm:
 
+~~~~{.C}
     switch ( uitdrukking )
     {
        case constante1 :
@@ -2022,26 +2142,27 @@ Dit is de algemene vorm:
           opdrachten;
        break;
     }
+~~~~
 
 De uitdrukking en constanten moeten van type `int` of `char` zijn. We
 kunnen hier dus geen `float` of `double` gebruiken. De opdrachten
 `break` en `default` mogen weggelaten worden. Bijvoorbeeld het uitvoeren
 van dezelfde opdracht voor 2 constanten:
 
+~~~~{.C}
     case 'F' :
     case 'f' :
        printf("fitis, phylloscopus trochilus\n");
        break;
+~~~~
 
 Als `default` met bijbehorende opdracht en `break` weggelaten worden,
 dan wordt geen opdracht uitgevoerd wanneer de geteste waarde niet als
 constante voorkomt.
 
-Lussen en andere controlemiddelen
-=================================
+# Lussen en andere controlemiddelen
 
-`while` herhalingsopdracht
---------------------------
+## `while` herhalingsopdracht
 
 Met deze herhalingsopdracht hebben we al kennis gemaakt. De algemene
 vorm is:
@@ -2066,42 +2187,50 @@ voorbeeld wordt `i` op een andere wijze verhoogd.
 
 <!-- -->
 
+~~~~{.C}
     i = 1;
     while (i < 10)
     {
        printf("dit is i: %d\n", i);
     }
+~~~~
 
 -   resultaat: 2 - 9
 
 <!-- -->
 
+~~~~{.C}
     i = 1;
     while (++i < 10)
     {
        printf("dit is i: %d\n", i);
     }
+~~~~
 
 -   resultaat: 2 - 10
 
 <!-- -->
 
+~~~~{.C}
     i = 1;
     while (i++ < 10)
     {
        printf("dit is i: %d\n", i);
     }
+~~~~
 
 -   resultaat: 1 - 9
 
 <!-- -->
 
+~~~~{.C}
     i = 1;
     while (i < 10)
     {
        printf("dit is i: %d\n", i);
        i++;
     }
+~~~~
 
 De structuur van het laatste voorbeeld:
 
@@ -2110,17 +2239,18 @@ De structuur van het laatste voorbeeld:
 Deze herhaling bestaat uit de initialisatie van de lusteller, het testen
 van de eindvoorwaarde en het verhogen van de lusteller.
 
-`for` herhalingsopdracht
-------------------------
+## `for` herhalingsopdracht
 
 Het laatste voorbeeld van `while` is nu met een `for` herschreven zonder
 dat de werking verandert. Ook voor dit voorbeeld[^11] geldt het
 stroomdiagramma.
 
+~~~~{.C}
     for (int i = 1; i < 10; i++)
     {
        printf("dit is i: %d\n", i);
     }
+~~~~
 
 Dit zijn nog andere voorbeelden:
 
@@ -2128,60 +2258,74 @@ Dit zijn nog andere voorbeelden:
 
 <!-- -->
 
+~~~~{.C}
     for (int n = 1; n <= 10000; n++)
     {
 
     }
+~~~~
 
 -   stap verschillend van 1
 
 <!-- -->
 
+~~~~{.C}
     for (int n = 2; n < 100; n += 11)
     {
        printf("%d\n", n);
     }
+~~~~
 
 -   stap verhogen met `*`
 
 <!-- -->
 
+~~~~{.C}
     for (float bedrag = 100; bedrag < 200; bedrag *= 1.08)
     {
        printf("bedrag: %.2f\n", bedrag);
     }
+~~~~
 
 -   `char` als lusteller
 
 <!-- -->
 
+~~~~{.C}
     for (char t = 'a'; t <= 'z'; t++)
     {
        printf("%c", t);
     }
+~~~~
 
 -   een opdracht minder in `for`
 
 <!-- -->
 
+~~~~{.C}
     for (int u = 1; u < 1000; )
     {
        u *= 2;
     }
+~~~~
 
 -   geen opdrachten in `for`
 
 <!-- -->
 
+~~~~{.C}
     for ( ; ; )
     {
        printf("hallo\n");
     }
+~~~~
 
 De algemene vorm van de `for` opdracht is:
 
+~~~~{.C}
     for ( initialisatie ; test ; aanpassen )
        opdracht
+~~~~
 
 Tussen de haakjes van de `for` opdracht kunnen we 3 opdrachten
 onderbrengen. Als we bijvoorbeeld een extra opdracht willen laten
@@ -2190,13 +2334,14 @@ bijgevoegd. Dit noemt men in C de komma bewerking.
 
 De 3 puntkomma's moeten altijd geschreven worden.
 
+~~~~{.C}
     for (int j=1, float bedrag = 100; bedrag < 200; j++, bedrag *= 1.08)
     {
        printf("jaar: %d bedrag: %.2f\n", j, bedrag);
     }
+~~~~
 
-`do while` herhalingsopdracht
------------------------------
+## `do while` herhalingsopdracht
 
 Bij deze herhalingsopdracht wordt de voorwaarde getest nadat de opdracht
 uitgevoerd is. Dit betekent dat de opdracht minstens éénmaal uitgevoerd
@@ -2204,21 +2349,24 @@ wordt, ook als de voorwaarde steeds false is.
 
 De algemene vorm is:
 
+~~~~{.C}
     do
        opdracht
     while ( voorwaarde );
+~~~~
 
 In het volgende voorbeeld worden de tekens van een ingegeven regel
 omgezet in de decimale ASCII code.
 
+~~~~{.C}
     do
     {
        scanf("%c", &teken);
        printf("%c heeft als code %d\n", teken, teken);
     } while (teken != '\n');
+~~~~
 
-`break` en `continue` bij herhalingsopdrachten
-----------------------------------------------
+## `break` en `continue` bij herhalingsopdrachten
 
 Bij complexere problemen is het wenselijk om een herhaling voortijdig af
 te breken of te herstarten. Hiervoor voorziet C de opdrachten `break` en
@@ -2237,6 +2385,7 @@ ingelezen getallen groter dan 20 is. Hier heeft de `while` opdracht een
 voorwaarde die steeds waar is. Het stopzetten van de herhaling wordt met
 `break` uitgevoerd.
 
+~~~~{.C}
     i = 0;
     while (1 == 1)
     {
@@ -2253,9 +2402,11 @@ voorwaarde die steeds waar is. Het stopzetten van de herhaling wordt met
           break;
        }
     }
+~~~~
 
 Het is mogelijk om dit te herschrijven zonder de `break` opdracht.
 
+~~~~{.C}
     #define FALSE 0
     #define TRUE 1
 
@@ -2279,6 +2430,7 @@ Het is mogelijk om dit te herschrijven zonder de `break` opdracht.
           }
        }
     }
+~~~~
 
 ### `continue`
 
@@ -2287,6 +2439,7 @@ herstarten. Anders geformuleerd: de opdrachten na `continue` worden
 overgeslagen. In het volgende voorbeeld wordt in de `while` opdracht de
 verwerking van spaties overgeslagen.
 
+~~~~{.C}
     while( (ch = getchar() ) != EOF)
     {
        if (ch == ' ')
@@ -2296,9 +2449,11 @@ verwerking van spaties overgeslagen.
        putchar( ch );
        teller++;
     }
+~~~~
 
 Dit voorbeeld kan herschreven worden zonder `continue`.
 
+~~~~{.C}
     while( (ch = getchar() ) != EOF)
     {
        if (ch != ' ')
@@ -2307,9 +2462,9 @@ Dit voorbeeld kan herschreven worden zonder `continue`.
           teller++;
        }
     }
+~~~~
 
-`goto`
-------
+## `goto`
 
 De `goto` opdracht maakt het mogelijk om naar een andere plaats in het
 programma te springen. Dit is een opdracht die nog stamt uit het FORTRAN
@@ -2321,11 +2476,9 @@ slecht onderhoudbaar. Gebruik daarom geen `goto` en beschouw het als
 onbestaande. Om deze redenen wordt de `goto` niet verder besproken
 [^12].
 
-Functies
-========
+# Functies
 
-Kennismaking
-------------
+## Kennismaking
 
 Bij één van de eerste programmavoorbeelden hebben we al kennisgemaakt
 met functies. Een functie groepeert meerdere opdrachten bij een naam.
@@ -2335,6 +2488,7 @@ gewone opdracht gebruiken.
 In het volgende voorbeeld wordt de functie `lijn()` gebruikt om tweemaal
 een lijn van sterretjes op het scherm te schrijven.
 
+~~~~{.C}
     void lijn()
     {
        for (int i=0; i<18; i++)
@@ -2352,6 +2506,7 @@ een lijn van sterretjes op het scherm te schrijven.
        
        return 0;
     }
+~~~~
 
 Uit dit voorbeeld blijkt ook dat we variabelen kunnen declareren binnen
 de functie. De variabele `i` mag alleen maar gebruikt worden binnen de
@@ -2361,8 +2516,7 @@ trouwens niet beperkt tot functies. De syntax is algemeen geldig: na
 elke openingsaccolade die opdrachten groepeert, mogen we variabelen
 declareren[^13].
 
-Parameters
-----------
+## Parameters
 
 We kunnen de flexibiliteit van een functie verhogen als we bij de oproep
 een waarde doorgeven. Dit betekent dat we een gedeelte van de werking
@@ -2373,6 +2527,7 @@ en wordt door de functie gebruikt om het aantal spaties te bepalen. Bij
 de oproep wordt de door te geven waarde tussen de functiehaken
 geplaatst.
 
+~~~~{.C}
     void spatie(int aantal)
     {
        for (int i=0; i < aantal; i++)
@@ -2389,6 +2544,7 @@ geplaatst.
        
        return 0;
     }
+~~~~
 
 In verband met parameters kent men de volgende terminologie:
 
@@ -2403,6 +2559,7 @@ In verband met parameters kent men de volgende terminologie:
 We kunnen een functie met meerdere parameters voorzien. De formele en
 actuele parameters worden gescheiden door komma's.
 
+~~~~{.C}
     tlijn(char t, int n)
     {
        for (int i=0; i < n; i++)
@@ -2410,14 +2567,16 @@ actuele parameters worden gescheiden door komma's.
           printf("%c", t);
        }
     }
+~~~~
 
 De functie `tlijn()` kan zo opgeroepen worden:
 
+~~~~{.C}
     tlijn('+',20);
     tlijn('=',45);
+~~~~
 
-Return en functietype
----------------------
+## Return en functietype
 
 Als we een resultaat van een functie willen bekomen, dan wordt dit
 doorgegeven met de `return` opdracht. We moeten dan wel aangeven welke
@@ -2427,6 +2586,7 @@ van een bepaald type, ook functies worden met een type verbonden. Als we
 de functieoproep in een uitdrukking plaatsen, dan wordt de oproep
 vervangen door het resultaat van de functie.
 
+~~~~{.C}
     int eigen_abs(int a) /* int : functietype */
     {
        if (a < 0)
@@ -2450,6 +2610,7 @@ vervangen door het resultaat van de functie.
 
        return 0;
     }
+~~~~
 
 Het functietype mag niet weggelaten worden[^14]. Als we helemaal geen
 resultaat willen teruggeven, dan moet dit expliciet aangegeven worden
@@ -2517,8 +2678,7 @@ hiervan wil afwijken in C, kan je niet anders dan pointers te gebruiken
 bij parameters. Om dat te verduidelijken wordt in de volgende sectie de
 adresoperator uitgelegd.
 
-De `&` operator
----------------
+## De `&` operator
 
 De `&` operator bij een variabelenaam geeft het adres van die variabele.
 We kunnen nagaan waar een variabele zich in het geheugen bevindt.
@@ -2556,8 +2716,7 @@ Resultaat:
     main: a = 5 &a = 65502
     fu: a = 7 &a = 65496
 
-Pointers en adresparameters
----------------------------
+## Pointers en adresparameters
 
 De volgende functie is bedoeld om de inhoud van twee variabelen te
 verwisselen. Deze versie is niet correct omdat alleen de kopies van de
@@ -2706,8 +2865,7 @@ In dit geval wordt de pointer `p` geïnitialiseerd met het adres van de
 variabele `getal` en bijgevolg komt de waarde `17` terecht in de
 variabele `getal`.
 
-`inline` functies
------------------
+## `inline` functies
 
 Met het woord `inline` kan je ervoor zorgen dat er bij de oproep van een
 functie de code van deze functie rechtstreeks uitgevoerd wordt zonder
@@ -2735,8 +2893,7 @@ beperkt tot de huidige module omdat er voor dit type functie geen adres
 in de code wordt vastgelegd. En daardoor zal de linker externe
 verwijzingen naar een `inline` functie niet kunnen oplossen.
 
-Recursie
---------
+## Recursie
 
 Functies in C hebben eigenschappen die het gemakkelijk maken om
 recursie[^17] toe te passen bij het oplossen van problemen. Zo worden
@@ -2879,8 +3036,7 @@ er gegarandeerd geen zijeffecten zijn. Hierdoor is het gemakkelijker om
 verschillende delen van een programma (threads, functies) automatisch te
 verdelen over de verschillende cores die in de CPU aanwezig zijn.
 
-Geheugenklassen
-===============
+# Geheugenklassen
 
 Elke variabele in een C programma behoort tot een geheugenklasse. Deze
 klasse bepaalt de levensduur en de bereikbaarheid van de variabele. Voor
@@ -2893,8 +3049,7 @@ deze woorden kan voor het type geplaatst worden bij een declaratie.
 
 geheugenklasse + type + variabelenaam
 
-Automatische variabelen
------------------------
+## Automatische variabelen
 
 Dit zijn alle variabelen binnen een functie. We kunnen deze variabelen
 ook aanduiden met de term lokale variabelen. De ruimte voor deze
@@ -2921,8 +3076,7 @@ Het is duidelijk dat we geen lokale variabele kunnen gebruiken voor
 gegevens op te slaan die tijdens de hele uitvoering van het programma
 moeten blijven bestaan.
 
-Externe variabelen
-------------------
+## Externe variabelen
 
 De term `extern` wordt bij gebruikt voor de globale variabelen. Hiermee
 bedoelen we de variabelen die buiten de functies gedeclareerd worden.
@@ -2941,8 +3095,7 @@ Hier wordt aangegeven dat de variabele `waarde` in een ander bestand
 gedeclareerd is. In C kunnen we met meerdere programmabestanden werken
 die gemeenschappelijke variabelen hebben.
 
-`static` variabele
-------------------
+## `static` variabele
 
 Hiermee bedoelen we variabelen die altijd bestaan, ook al staat de
 declaratie binnen een functie. De externe variabelen zijn statisch omdat
@@ -3068,15 +3221,13 @@ Tot slot geven we nog een overzicht dat al de geheugenklassen weergeeft.
                    extern static   `static`     altijd       in 1 bestand
   ---------------- --------------- ------------ ------------ -------------------
 
-Arrays en pointers
-==================
+# Arrays en pointers
 
 Arrays zijn variabelen die meerdere waarden van een zelfde soort kunnen
 opslaan. Pointers zijn verwijzingen naar andere variabelen. We
 behandelen eerst arrays en daarna het verband met pointers.
 
-Array voorbeelden
------------------
+## Array voorbeelden
 
     int getal[10];
     float r[100];
@@ -3116,8 +3267,7 @@ arrays gebruikt kunnen worden.
        printf("het gemiddelde is %d\n",som/DIM);
     }
 
-Initialisatie van arrays
-------------------------
+## Initialisatie van arrays
 
 Net zoals enkelvoudige variabelen kunnen ook arrays geïnitialiseerd
 worden. Dit kan zowel bij externe en statische arrays en ook bij arrays
@@ -3158,8 +3308,7 @@ In deze versie is de lengte van de array weggelaten. De lengte wordt nu
 bepaald door het aantal getallen tussen accolades. De lengte mag alleen
 maar weggelaten worden als de array geïnitialiseerd wordt.
 
-Verband tussen pointers en arrays
----------------------------------
+## Verband tussen pointers en arrays
 
 De arraynaam is een pointer naar eerste element. Dit verband
 verduidelijken we met een voorbeeld.
@@ -3224,8 +3373,7 @@ Hetzelfde probleem ontstaat bij de interpretatie van `*p++` . Is dit
 `++` dezelfde prioriteit hebben en unaire operatoren van rechts naar
 links groeperen.
 
-Arrays als functieparameters
-----------------------------
+## Arrays als functieparameters
 
 Als formele parameter kunnen we arrays gebruiken. De afmeting van de
 array mag weggelaten worden.
@@ -3328,8 +3476,7 @@ Hier is een samenvatting van de pointerbewerkingen:
 Merk tenslotte op dat een functie een doorgegeven array kan wijzigen,
 juist omdat een array als een pointer wordt doorgegeven.
 
-Arrays met meerdere dimensies
------------------------------
+## Arrays met meerdere dimensies
 
 Bij de declaratie plaatsen we meerdere indexen na de arraynaam. Elke
 index staat apart tussen de rechte haken.
@@ -3371,8 +3518,7 @@ worden de twee andere rijen gevuld. Het is ook mogelijk om de binnenste
 paren accolades, die telkens een rij getallen afsluiten, weg te laten.
 Dit is identiek in werking maar is minder overzichtelijk.
 
-Pointers naar functies
-----------------------
+## Pointers naar functies
 
 Zoals reeds vermeld moet bij de declaratie van een pointer aangegeven
 worden naar welk type deze pointer wijst. We kunnen in de taal C ook een
@@ -3476,11 +3622,9 @@ Dit zijn een aantal extra oefeningen over pointers en arrays.
 
         int zoekpatroon(char *tekst, char *patroon);
 
-Tekenstrings en stringfunctions
-===============================
+# Tekenstrings en stringfunctions
 
-Strings definiëren
-------------------
+## Strings definiëren
 
 Een string is een opeenvolging van `char` constanten, waarbij het einde
 aangeduid wordt door 0. We kunnen een stringconstante samenstellen met 2
@@ -3561,8 +3705,7 @@ De inhoud van de array kan wel gewijzigd worden:
 
     atekst[0] = 'p';
 
-Arrays van tekenstrings
------------------------
+## Arrays van tekenstrings
 
 We declareren de volgende variabele:
 
@@ -3589,8 +3732,7 @@ wordt. Een deel van de array blijft dus onbenut.
 
 ![Arrays van strings](c7.jpg)
 
-Stringin- en uitgave
---------------------
+## Stringin- en uitgave
 
 We creëren eerst plaats voor de in te lezen string.
 
@@ -3639,8 +3781,7 @@ volgende whitespace. Dit kan gebruikt worden om woorden uit een regel in
 te lezen. `puts()` doet altijd een newline op het einde van de string,
 `printf()` alleen als `\n` vermeld wordt.
 
-Enkele stringfuncties
----------------------
+## Enkele stringfuncties
 
 In C++ bestaat het `string` type met een hele reeks eigen methoden.
 Hierdoor zullen de volgende C functies minder belangrijk worden.
@@ -3722,8 +3863,7 @@ Deze functie kopieert een string.
 In dit voorbeeld worden de letters van de string één voor één gekopieerd
 naar de array `kopie`.
 
-Argumenten op de opdrachtregel
-------------------------------
+## Argumenten op de opdrachtregel
 
 De argumenten die bij de programmastart worden doorgegeven, zijn
 bereikbaar vanuit het programma. Hiervoor wordt `main()` voorzien met
@@ -3764,8 +3904,7 @@ die `NULL` is.
        return 0;
     }
 
-Strings sorteren
-----------------
+## Strings sorteren
 
 Tot slot is hier nog een programmavoorbeeld, dat strings sorteert.
 
@@ -3843,8 +3982,7 @@ Indien een kleinere string gevonden wordt, dan worden de pointers die
 wijzen naar de eerste en de gevonden string verwisseld. Hetzelfde wordt
 herhaald voor de tweede tot en met de voorlaatste string.
 
-Overzicht van de string functies
---------------------------------
+## Overzicht van de string functies
 
 De prototypes van de functies voor stringmanipulatie zijn terug te
 vinden in de headerbestand `string.h`.
@@ -4307,11 +4445,9 @@ gebruiken de vorige `s1` string, vanaf het laatst gevonden token.
 Het bovenstaande voorbeeld splitst een string op in woorden. De spatie
 is het scheidingsteken.
 
-Structuren
-==========
+# Structuren
 
-`malloc()` en `free()`
-----------------------
+## `malloc()` en `free()`
 
 Met de functies `malloc()` en `free()` kan je blokken geheugen op
 dynamische wijze reserveren en vrijgeven. Met `malloc()` doe je de
@@ -4375,8 +4511,7 @@ een `NULL` als resultaat teruggeven om te melden dat er geen geheugen
 meer beschikbaar is. Dit kan pointerfouten veroorzaken en een crash van
 het lopende programma als gevolg.
 
-Types maken met `typedef`
--------------------------
+## Types maken met `typedef`
 
 We bespreken eerst de mogelijkheid om aan zelf gedefiniëerde types een
 naam te geven. Dit bespaart schrijfwerk bij het declareren van
@@ -4408,8 +4543,7 @@ Een zelf gedefiniëerd type kan ook bij functies gebruikt worden.
 Het is zo dat het gebruik van `typedef` de leesbaarheid van het
 programma verbetert.
 
-Structuur[^22] [^23]
---------------------
+## Structuur[^22] [^23]
 
 Met een structuur kunnen we een type ontwerpen, dat gegevens van een
 verschillende soort samenbrengt. We doen dit met het woord `struct`.
@@ -4477,8 +4611,7 @@ Wanneer een structuurvariabele wordt toegekend aan een andere, wordt de
 hele structuur gekopieerd. Dus elk veld van de ene variabele wordt
 gekopieerd naar elk veld van de andere. Dit is dus *call by value*.
 
-Arrays van structuren
----------------------
+## Arrays van structuren
 
 We declareren polygoon als een array van 50 elementen van het type
 `PUNT`.
@@ -4517,8 +4650,7 @@ Bij de oproep van `afstand()` zien we de notatie `polygoon[i]`. Deze
 uitdrukking is van het type `PUNT` en dit komt overeen met de declaratie
 van de formele parameters van `afstand()`.
 
-Pointers naar structuren
-------------------------
+## Pointers naar structuren
 
 Net zoals een pointer naar een `int` type kunnen we een pointer
 declareren die naar het type `PUNT` wijst.
@@ -4562,8 +4694,7 @@ Dit is het gebruik van de functie:
     maaknul( &p2 );
     maaknul( &p3 );
 
-Structuur binnen structuur
---------------------------
+## Structuur binnen structuur
 
 Het is mogelijk om als type voor een veld een zelfgedefiniëerd type te
 gebruiken.
@@ -4598,8 +4729,7 @@ Deze uitdrukkingen moeten we zo interpreteren:
 
 De `.` operator groepeert dus van links naar rechts.
 
-Unions
-------
+## Unions
 
 Soms is het nodig om een bepaalde waarde onder verschillende vormen
 bereikbaar te maken. Dit doen we met `union`.
@@ -4632,8 +4762,7 @@ geheugen is bereikbaar met twee namen: `getal.fwaarde` en
 `getal.lwaarde`. We plaatsen een float-constante in `getal` en daarna
 toont `printf()` op welke wijze dit opgeslagen wordt.
 
-Bitvelden
----------
+## Bitvelden
 
 In sommige gevallen is het bereik van de werkelijke waarden van een veld
 slechts een fractie van het maximale bereik. In dat geval is het
@@ -4670,8 +4799,7 @@ De bitverdeling van `a`, `b` en `c` ziet er als volgt uit:
 
 De bits 7 tot 10 zijn niet gebruikt.
 
-Structuren en lijsten
----------------------
+## Structuren en lijsten
 
 Dit deel is er enkel om historische redenen. Vroeger was de gelinkte
 lijst (en aanverwanten) de enige mogelijkheid om dynamische
@@ -4915,8 +5043,7 @@ Nogmaals moet herhaald worden dat dit type constructies in C kan
 vermeden worden door over te schakelen naar C++ en daar de STL `vector`
 of andere te gebruiken.
 
-Bestandsin- en uitvoer
-======================
+# Bestandsin- en uitvoer
 
 In dit hoofdstuk worden een aantal functies beschreven voor het lezen en
 schrijven van bestanden. Tenzij anders aangegeven zijn de prototypes
@@ -4926,8 +5053,7 @@ bestaan er op elk systeem ook nog functies die dichter bij de hardware
 staan en specifiek zijn voor het desbetreffende operating system. Om die
 reden worden deze functies hier niet beschreven.
 
-`fopen()`
----------
+## `fopen()`
 
 Vooraleer er gelezen of geschreven wordt van of naar een bestand, moet
 een bestand geopend worden. Bij deze actie wordt een filepointer
@@ -4963,8 +5089,7 @@ het omgekeerde.
 De functie `fopen()` geeft als resultaat een filepointer of `NULL` bij
 fout.
 
-`fclose()`
-----------
+## `fclose()`
 
 Met deze functie wordt een bestand gesloten.
 
@@ -5006,8 +5131,7 @@ De functie geeft als resultaat een 0 bij succes of `EOF` bij fout.
       return 0;
     }
 
-`ferror()`
-----------
+## `ferror()`
 
 Deze macro geeft als resultaat een waarde verschillend van nul als er
 een fout is opgetreden bij deze filepointer.
@@ -5016,8 +5140,7 @@ Prototype:
 
     int ferror(FILE *stream);
 
-`perror()`
-----------
+## `perror()`
 
 Deze functie drukt een foutmelding op het scherm via `stderr`.
 
@@ -5028,8 +5151,7 @@ Prototype:
 Eerst wordt de string `s` gedrukt. Daarna volgt een dubbele punt en een
 foutmelding die overeenkomt met de huidige waarde van `errno`.
 
-`strerror()`
-------------
+## `strerror()`
 
 Deze functie geeft als resultaat een foutmelding-string die overeenkomt
 met het doorgegeven foutnummer.
@@ -5038,8 +5160,7 @@ Prototype (ook in `string.h`):
 
     char *strerror(int errnum);
 
-`_strerror()`
--------------
+## `_strerror()`
 
 Deze functie geeft een string met een foutmelding terug. Het formaat is
 zoals bij `perrror`.
@@ -5082,8 +5203,7 @@ geplaatst worden.
       return 0;
     }
 
-`fwrite()`
-----------
+## `fwrite()`
 
 Met deze functie kan informatie naar een bestand geschreven worden. De
 functie schrijft `n` elementen van afmeting `size` bytes naar het
@@ -5132,8 +5252,7 @@ geschreven wordt.
 Deze werkwijze is te vergelijken met de Java objectserialisatie. Dat
 levert ook een binair bestand op.
 
-`fread()`
----------
+## `fread()`
 
 Deze functie leest uit een bestand. Er worden `n` elementen van afmeting
 `size` bytes in de array `ptr` gelezen.
@@ -5145,8 +5264,7 @@ Prototype:
 De functie levert als resultaat het aantal elementen (niet bytes) dat
 effectief gelezen is.
 
-`fseek()`
----------
+## `fseek()`
 
 Deze functie verplaatst de wijzer die de positie aangeeft waar
 eerstvolgend gelezen of geschreven wordt.
@@ -5168,8 +5286,7 @@ De parameter `fromwhere` kan een van de volgende waarden zijn:
 
 -   `SEEK_END` verplaats vanaf het einde van het bestand
 
-`fgets()`
----------
+## `fgets()`
 
 Deze functie leest een regel uit een bestand.
 
@@ -5211,8 +5328,7 @@ fout teruggegeven.
       return 0;
     }
 
-`fputs()`
----------
+## `fputs()`
 
 Met deze functie wordt een regel naar een bestand geschreven.
 
@@ -5223,8 +5339,7 @@ Prototype:
 De functie geeft als resultaat bij succes het laatst weggeschreven teken
 of `EOF` bij fout.
 
-`fgetc()`
----------
+## `fgetc()`
 
 Met deze functie wordt een teken gelezen uit een bestand.
 
@@ -5234,8 +5349,7 @@ Prototype:
 
 De functie geeft het teken of `EOF` terug.
 
-`fputc()`
----------
+## `fputc()`
 
 Met deze functie wordt een teken naar een bestand geschreven.
 
@@ -5243,8 +5357,7 @@ Prototype:
 
     int fputc(int c, FILE *stream);
 
-`fprintf()`
------------
+## `fprintf()`
 
 Dit is de file-variant van `printf`.
 
@@ -5255,8 +5368,7 @@ Prototype:
 De functie geeft als resultaat het aantal geschreven bytes of `EOF` bij
 fout.
 
-`fscanf()`
-----------
+## `fscanf()`
 
 Dit is de file-variant van `scanf`.
 
@@ -5267,8 +5379,7 @@ Prototype:
 De functie geeft als resultaat het aantal in variabelen opgeborgen
 waarde.
 
-Gereserveerde woorden in C99
-============================
+# Gereserveerde woorden in C99
 
     auto      enum     restrict unsigned
     break     extern   return   void
@@ -5281,8 +5392,7 @@ Gereserveerde woorden in C99
     double    long     typedef  
     else      register union    
 
-Prioriteiten van de operatoren
-==============================
+# Prioriteiten van de operatoren
 
   --------------------------------- ----------------------------
   Operator                          Groepering
@@ -5303,8 +5413,7 @@ Prioriteiten van de operatoren
   `,`                               links -&gt; rechts
   --------------------------------- ----------------------------
 
-Werking stackframe in C
-=======================
+# Werking stackframe in C
 
 In deze appendix wordt uitgelegd hoe de C compiler code genereert die
 stackframes mogelijk maken. Stackframes zijn het mechanisme dat mogelijk
@@ -5536,25 +5645,26 @@ variabelen te tonen. Deze appendix heeft duidelijk gemaakt dat
 functieoproepen in C op een ingenieuze wijze gecompileerd worden zodat
 recursie en bijgevolg een lokale toestand voor elke oproep mogelijk is.
 
-Bibliografie
-============
+# Bibliografie
 
-Borland 4585 Scotts Valley Drive, Scotts Valley, California 95066 USA
+* Borland 4585 Scotts Valley Drive, Scotts Valley, California 95066 USA
 
-Prentice Hall 1978 Brian W.Kernighan Dennis M.Ritchie
+* Prentice Hall 1978 Brian W.Kernighan Dennis M.Ritchie
 
-AlKelley IraPohl The Benjamins/Cummings Publishing Company, Inc. 2725
+* AlKelley IraPohl The Benjamins/Cummings Publishing Company, Inc. 2725
 Sand Hill Road, Menlo Park, California 94025 USA
 
-MitchellWaite StephenPrata DonaldMartin The Waite Group, Howard W. Sams
+* MitchellWaite StephenPrata DonaldMartin The Waite Group, Howard W. Sams
 & Company A Division of Macmillan, Inc., 4200 West 62nd Street,
 Indianapolis, Indiana 46268 USA
 
-A.Bellen J.Vandebroek KHLim Universitaire Campus, gebouw B, 3590
+* A.Bellen J.Vandebroek KHLim Universitaire Campus, gebouw B, 3590
 Diepenbeek
 
-Brian W.Kernighan Dennis M.Ritchie Academic Service Postbus 81, 2870 AB
+* Brian W.Kernighan Dennis M.Ritchie Academic Service Postbus 81, 2870 AB
 Schoonhoven
+
+# Deel C++
 
 In deel II wordt de programmeertaal C++ behandeld. Vermits C++ een
 uitbreiding is van C, zijn beide delen opgenomen in deze cursustekst.
@@ -5576,8 +5686,7 @@ van C++. Uiteraard komt hierdoor de objectoriëntatie aan bod. Het
 gebruik van STL en enkele vernieuwingen van C++11/C++14 staan in latere
 delen. Dit deel behandelt dus C++ volgens de standaarden van vóór C++11.
 
-Inleiding
-=========
+# Inleiding
 
 In de geschiedenis van de programmeertalen zijn er regelmatig nieuwe
 paradigma's opgedoken. Met elk van die paradigma's werd een nieuwe
@@ -5606,8 +5715,7 @@ programmeertaal in de academische bachelor. De belangrijkste reden om na
 Java toch nog C++ te onderwijzen is dat C++ nog veel gebruikt wordt en
 in bepaalde toepassingsdomeinen beter voldoet dan Java.
 
-Eigenschappen van objectgeoriënteerde talen
--------------------------------------------
+## Eigenschappen van objectgeoriënteerde talen
 
 Objectgeoriënteerde talen hebben een aantal specifieke kenmerken die ze
 onderscheiden van niet-objectgeoriënteerde talen. Deze eigenschappen
@@ -5676,8 +5784,7 @@ zijn er objectgeoriënteerde uitbreidingen op reeds bestaande talen; dit
 geldt onder andere voor Lisp en Prolog. Aan dit lijstje worden uiteraard
 de jongste talen Java, Javascript, Python en Ruby toegevoegd.
 
-Geschiedenis van C++
---------------------
+## Geschiedenis van C++
 
 De taal C++ is ontworpen door Bjarne Stroustrup en is volledig gebaseerd
 op C. C op zijn beurt is afgeleid van zijn voorganger BCPL. De
@@ -5717,8 +5824,7 @@ behouden op de gegevens en bijbehorende acties in een probleem. Hierdoor
 is het mogelijk dat één persoon met C++ programma's van meer dan 25.000
 regels kan ontwerpen en onderhouden. In C zou dit veel moeilijker zijn.
 
-Waarom objectgeoriënteerd programmeren?
----------------------------------------
+## Waarom objectgeoriënteerd programmeren?
 
 Veel C programmeurs blijven liever bij C en zijn niet geneigd om C++ te
 leren. Hun argumenten zijn dikwijls als volgt:
@@ -5836,8 +5942,7 @@ Normaal gezien is het mogelijk om een C programma te compileren met
 behulp van een C++ compiler. Er zijn wel enkele kleine verschillen
 tussen beide compilers voor wat betreft de C syntax.
 
-C constructies met een andere betekenis in C++
-==============================================
+# C constructies met een andere betekenis in C++
 
 We geven hier een overzicht van de belangrijkste taal elementen die
 anders zijn in C++ dan in C.
@@ -5850,8 +5955,7 @@ anders zijn in C++ dan in C.
 -   Een karakterconstante is in C++ van het type `char`, in C is dit
     `int`.
 
-Referentietype
---------------
+## Referentietype
 
 Dit is een nieuw type in C++. Het referentietype[^28] maakt het mogelijk
 om een variabele te declareren die als synomiem van een andere variabele
@@ -5910,11 +6014,9 @@ pointervariabele. Dit is dus *call by reference*.
 Het referentietype komt later opnieuw aan bod wanneer we de operatoren
 bespreken.
 
-De klasse in C++
-================
+# De klasse in C++
 
-Een klasse definiëren
----------------------
+## Een klasse definiëren
 
 C++ kent niet alleen het type `struct` maar ook het type `class`. Beiden
 kunnen gebruikt worden om gegevens in te kapselen. Dit doen we om
@@ -5947,8 +6049,7 @@ variabele van een zekere klasse aan te duiden. Als we het in de toekomst
 over objecten hebben, dan bedoelen we hiermee variabelen of stukken
 dynamisch geheugen waarin zich informatie van een zekere klasse bevindt.
 
-Toegang tot leden
------------------
+## Toegang tot leden
 
 Als we de leden van het object `p1` willen bereiken, dan zouden we het
 volgende kunnen uitproberen:
@@ -5979,8 +6080,7 @@ dit kunnen schrijven:
 Op deze wijze wordt duidelijk weergegeven dat de leden `x` en `y` niet
 publiek toegankelijk zijn.
 
-Een constructor bijvoegen
--------------------------
+## Een constructor bijvoegen
 
 Omdat de leden van de klasse `Punt
            ` niet publiek toegankelijk zijn is er een probleem om
@@ -6074,8 +6174,7 @@ gekozen wordt. Voor lidfuncties, die dus geen constructor zijn, is er
 wel een verschil tussen implementatie binnen of buiten de klasse. Dit
 onderscheid bespreken we later.
 
-Objecten declareren
--------------------
+## Objecten declareren
 
 Zoals we met een eenvoudig type een variabele kunnen declareren, kunnen
 we met een klasse een object declareren.
@@ -6117,8 +6216,7 @@ voorgedefiniëerde variabele en bevindt zich binnen de `std` naamruimte.
 In de recente C++ schrijfstijl wordt de `std::` naamruimte geschreven
 waar die nodig is.
 
-Meerdere constructors
----------------------
+## Meerdere constructors
 
 Het is mogelijk om meerdere constructors te voorzien binnen een klasse.
 Het aantal en het type parameters van alle constructors moeten
@@ -6169,8 +6267,7 @@ mag gebruikt worden op voorwaarde dat het type en/of het aantal
 parameters verschilt. Dit verschil moet er zijn opdat de compiler de
 oproep van de juiste methode kan bepalen.
 
-Een object initialiseren door een ander object
-----------------------------------------------
+## Een object initialiseren door een ander object
 
 Het is mogelijk om bij de declaratie een object te initialiseren met een
 ander object.
@@ -6198,8 +6295,7 @@ klassen `Punt` is het lidsgewijs kopiëren het juiste gedrag. In het
 bovenstaande voorbeeld worden de datavelden `x` en `y` van `p1` naar
 `p2` gekopieerd.
 
-Objecten kopiëren
------------------
+## Objecten kopiëren
 
 Zo kunnen we ook objecten kopiëren met een toekenning. Deze operator
 kopieert zoals bij de *copy constructor* alle dataleden.
@@ -6221,11 +6317,9 @@ referentietype. Het bijvoegen van bewerkingen zoals `operator=()`
 bekijken we later nog wel en dan volgt de uitleg waarvoor in deze
 notatie het referentietype nodig is.
 
-Lidfuncties in een klasse bijvoegen
------------------------------------
+## Lidfuncties in een klasse bijvoegen
 
-De twee dataleden van de klasse `Punt
-          ` zijn privaat. Dit betekent dat we niet rechtstreeks toegang
+De twee dataleden van de klasse `Punt` zijn privaat. Dit betekent dat we niet rechtstreeks toegang
 krijgen tot de dataleden. Daarom voegen we een klassefunctie bij die de
 coördinaten van een `Punt` op het scherm drukt.
 
@@ -6267,8 +6361,7 @@ De notatie van de oproep van een klassefunctie is dezelfde als in C voor
 de toegang tot een veld van een structuur. De naam van het object wordt
 gevolgd door een punt en de naam van de klassefunctie.
 
-Inline uitvoering van een lidfunctie
-------------------------------------
+## Inline uitvoering van een lidfunctie
 
 Het is mogelijk om de tijd die nodig is voor de oproep en de terugkeer
 van een functie te elimineren. Dit is nodig als een klassefunctie zeer
@@ -6391,8 +6484,7 @@ gebeurt dat pas bij de uitvoering van het programma (zoals in Java). C++
 zou C++ niet zijn als we voor het maken van objecten geen meerdere
 mogelijkheden zouden hebben.
 
-Bewerkingen in een klasse
-=========================
+# Bewerkingen in een klasse
 
 C++ kent de mogelijkheid om een nieuwe betekenis te geven aan een
 bewerkingsteken afhankelijk van de klasse waarop de bewerking betrekking
@@ -6400,8 +6492,7 @@ heeft. Zo kan men een andere betekenis geven aan de optelling bij
 breuken en bij complexe getallen. We geven een voorbeeld dat handelt
 over breuken.
 
-Bewerkingen als functies in een klasse
---------------------------------------
+## Bewerkingen als functies in een klasse
 
 We ontwerpen de klasse om een breuk op te slaan. De klasse krijgt twee
 dataleden: één voor de teller en één voor de noemer. Beide worden
@@ -6500,8 +6591,7 @@ van een lokale variabele teruggeven. Als we hier het referentietype
 zouden gebruiken, geven we een wijzigbare lokale variabele terug. Dit
 mag niet omdat deze variabele niet meer bestaat als de functie stopt.
 
-Vriendfuncties van een klasse
------------------------------
+## Vriendfuncties van een klasse
 
 In sommige gevallen is het nodig om een bewerking als een functie buiten
 de klasse te definiëren. Dit is het geval bij de functie die de uitvoer
@@ -6573,8 +6663,7 @@ We tonen nog een voorbeeld van een hoofdprogramma waarin de klasse
        std::cout << e << std::endl;
     }
 
-Lvalue en rvalue referenties
-----------------------------
+## Lvalue en rvalue referenties
 
 Tot nu toe hebben we enkel de notatie `Breuk&` gebruikt als
 referentietype. Sinds de komst van C++11 is er nog een tweede
@@ -6586,8 +6675,7 @@ dat we geheugen moeten kopiëren wanneer we in een methode een waarde
 teruggeven. In het C++11 deel van deze cursustekst zal dit nieuwe
 referentietype gedetaileerd uitgelegd worden.
 
-Dynamische objecten
-===================
+# Dynamische objecten
 
 Zoals C kent C++ ook het principe van het dynamisch reserveren van
 geheugen voor gegevensopslag. In C++ zijn voor dit doel de operatoren
@@ -6600,8 +6688,7 @@ blijven bestaan. Als je objecten niet dynamisch reserveert, blijven ze
 ofwel altijd bestaan als het globale variabelen zijn of bestaan ze maar
 even als het lokale variabelen binnen een functie of methode zijn.
 
-De `new` bewerking
-------------------
+## De `new` bewerking
 
 Met de `new` bewerking kan geheugen op dynamische wijze gereserveerd
 worden. In tegenstelling tot C waar `malloc()` een ingebouwde functie
@@ -6672,8 +6759,7 @@ de methode `druk()` de coördinaten in `pa
           ` pointers zijn, moet een pijl gebruikt worden om methoden te
 bereiken.
 
-De `delete` bewerking
----------------------
+## De `delete` bewerking
 
 Als in het voorgaande voorbeeld het einde van de functie bereikt wordt,
 houden de pointers `pa` en `pb` op te bestaan. Vermits ze allebei wijzen
@@ -6700,8 +6786,7 @@ Na het woord `delete` schrijven we de naam van de pointervariabele die
 wijst naar het dynamisch geheugen. Voor elke `new` bewerking die in een
 programma voorkomt, moet er een overeenkomstige `delete` bewerking zijn.
 
-`new` en `delete` bij arrays
-----------------------------
+## `new` en `delete` bij arrays
 
 Bij het gebruik van de bewerking `new` bestaat de mogelijkheid om
 geheugen voor arrays te reserveren. We schrijven dan na `new` een
@@ -6730,8 +6815,7 @@ Wanneer we het geheugen zo zouden reserveren:
 moeten we de rechte haken zeker schrijven zodat de destructor van `Punt`
 zeker loopt voor elk van de 100 punten.
 
-Het gebruik van `new` binnen een klasse
----------------------------------------
+## Het gebruik van `new` binnen een klasse
 
 Het is mogelijk om de hoeveelheid geheugen die nodig is binnen de klasse
 ook dynamisch te reserveren. Op deze manier zijn er geen beperkingen op
@@ -6788,8 +6872,7 @@ string zouden kopiëren, dan ontstaat er een situatie waarin een object
 verwijst naar geheugen die niet door het object wordt beheerd. Dit zou
 gevaarlijke situatie zijn.
 
-Een destructor bijvoegen
-------------------------
+## Een destructor bijvoegen
 
 Omdat er in de constructor dynamisch geheugen wordt gereserveerd, is het
 nodig dat in de klasse ook een destructor bestaat. Het prototype wordt
@@ -6811,8 +6894,7 @@ In deze destructor wordt met `delete` het geheugen van de string
 vrijgegeven. De uitvoerbewerking staat er alleen maar om te kunnen zien
 wanneer de destructor uitgevoerd wordt en is daarom niet noodzakelijk.
 
-De klasse `Tekst` gebruiken
----------------------------
+## De klasse `Tekst` gebruiken
 
 Het gebruik van de klasse `Tekst` is als volgt:
 
@@ -6842,8 +6924,7 @@ Voor de klasse `Tekst` betekent dit dat alle problemen met te kleine
 buffers vermeden worden. In andere woorden, het gehele geheugenbeheer
 voor de opslag van de tekst is in de klasse ingekapseld.
 
-Bewerkingen in een klasse bijvoegen
------------------------------------
+## Bewerkingen in een klasse bijvoegen
 
 In het voorgaande voorbeeld is de klasse `Tekst` eerder beperkt. Daarom
 voegen we een tweetal bewerkingen bij in de klasse. We zouden deze
@@ -6928,8 +7009,7 @@ nieuwe tekst. Deze nieuwe tekst wordt als resultaat teruggegeven. In de
 `+` bewerking wordt gebruik gemaakt van de eerder ontworpen `=` en `+=`
 bewerkingen. Het terugkeer type is in dit geval géén referentietype.
 
-Bewerkingen in een klasse gebruiken
------------------------------------
+## Bewerkingen in een klasse gebruiken
 
 Het gebruik van de klasse `Tekst` is als volgt:
 
@@ -6970,8 +7050,7 @@ een klasse zelf dynamisch geheugen wordt bijgehouden. Dit is de reden
 waarom het bovenstaand fragment problemen kan geven zolang geen eigen
 versie van de copyconstructor binnen de klasse `Tekst` wordt bijgevoegd.
 
-Objecten binnen objecten
-========================
+# Objecten binnen objecten
 
 In vele gevallen is het nuttig om een klasse te beschouwen als een
 enkelvoudig type. We gaan dan gemakkelijker klassen gebruiken om daarmee
@@ -7066,8 +7145,7 @@ overeen komt.
 Met de functie lengte kan de lengte van een object van de klasse `Lijn`
 berekend worden.
 
-Klassen afleiden
-================
+# Klassen afleiden
 
 Als we van plan zijn om een bepaalde klasse uit te breiden met nieuwe
 dataleden of klassefuncties, dan zouden we rechtstreeks in de
@@ -7181,8 +7259,7 @@ Het diagramma ziet er dan als volgt uit:
 In deze vorm toont het diagramma duidelijk dat door erfenis de klasse
 `PuntmetNaam` niet alleen `naam` als datalid heeft maar ook `x` en `y`.
 
-Virtuele klassefuncties
-=======================
+# Virtuele klassefuncties
 
 Door het mechanisme van de afleiding is het mogelijk om een bepaalde
 klasse als basisklasse te gebruiken. Van deze basisklasse worden
@@ -7211,8 +7288,7 @@ en zonder afbreuk te doen aan de algemeenheid van de basisklasse. In het
 voorbeeld dat volgt, willen we gewoon een waarde op het scherm drukken
 zonder te weten van welk specifiek getaltype de waarde is.
 
-Een abstracte klasse maken
---------------------------
+## Een abstracte klasse maken
 
 We maken een basisklasse die gaat dienen voor de opslag van een waarde.
 Als klassenaam kiezen we de naam `Waarde`. De eerste letter is een
@@ -7241,8 +7317,7 @@ Een *abstracte klasse* is niet bedoeld om er concrete objecten mee te
 maken maar wel om een algemeen gedrag te bepalen voor een reeks
 afgeleide klassen.
 
-Een virtuele functie maken
---------------------------
+## Een virtuele functie maken
 
 Bij dit voorbeeld is het gewenste algemeen gedrag van de klasse `Waarde`
 de mogelijkheid om de opgeslagen waarde op het scherm te drukken. Daarom
@@ -7307,8 +7382,7 @@ De klasse is nu niet meer abstract en je kan er nu wel objecten van
 maken. Maar dit heeft niet veel zin omdat het objecten zijn die geen
 waarden opslaan. Het is daarom beter om de klasse abstract te houden.
 
-Afleidingen maken
------------------
+## Afleidingen maken
 
 We maken twee afleidingen van de basisklasse. Een voor de opslag van een
 geheel getal en een voor de opslag van een reëel getal.
@@ -7361,8 +7435,7 @@ een ander type zijn:
        std::cout << "reeel " << floatwaarde;
     }
 
-Objectcompatibiliteit
----------------------
+## Objectcompatibiliteit
 
 In programmeertalen zoals Pascal, Java, C en C++ is er een strikte
 typecontrole door de compiler. De omzetting van het ene type naar het
@@ -7399,8 +7472,7 @@ het voorbeeld weergeeft.
 
 ![Twee klassen met een gemeenschappelijke superklasse](cpp-3.jpg)
 
-Het mechanisme van de virtuele functie
---------------------------------------
+## Het mechanisme van de virtuele functie
 
 Als we een virtuele klassefunctie oproepen via een pointer naar de
 basisklasse komt het effect van de virtuele functie tot uiting.
@@ -7510,8 +7582,7 @@ is; de waarde van het object kan verschillend zijn in de verschillende
 afleidingen. Dit verschil in gedrag wordt vastgelegd in de implementatie
 van de afgeleide klassen.
 
-Omzettingen met `dynamic_cast`
-------------------------------
+## Omzettingen met `dynamic_cast`
 
 In bepaalde gevallen willen we toch pointers van verschillende klassen
 kopiëren ook al is de kopieerrichting niet toegestaan. Je kan altijd een
@@ -7615,8 +7686,7 @@ meestal kan je het probleem oplossen met enkel virtuele methoden. Merk
 op dat een `dynamic_cast` omzetting alleen maar werkt als de basisklasse
 tenminste één virtuele methode heeft.
 
-Meervoudige erfenis
--------------------
+## Meervoudige erfenis
 
 In het volgende voorbeeld erven de klassen `B` en `C` van de klasse `A`.
 Als dan de klasse `D` ook nog erft van zowel `B` als `C`, hebben we een
@@ -7688,11 +7758,9 @@ verboden omdat dit dikwijls de oorzaak is van onduidelijkheid in de
 erfenis. Meestal zal je in C++ de meervoudige erfenis ook niet nodig
 hebben.
 
-Constante waarden en objecten
-=============================
+# Constante waarden en objecten
 
-Constante objecten
-------------------
+## Constante objecten
 
 Het is mogelijk om binnen de klassedeclaratie voorzieningen te treffen
 om constante objecten correct te behandelen. Een constant object is een
@@ -7778,13 +7846,11 @@ methode hebben we er `const` voor geplaatst.
 
     void toon(const Punt &pc);
 
-Constante uitdrukkingen met `constexpr`
----------------------------------------
+## Constante uitdrukkingen met `constexpr`
 
 Nog uit te schrijven.
 
-Statische leden in een klasse
-=============================
+# Statische leden in een klasse
 
 Statische dataleden zijn leden waarvoor slechts éénmaal geheugenruimte
 wordt gereserveerd. In het volgende voorbeeld bestaat er binnen de
@@ -7907,8 +7973,7 @@ klasse wil aanmaken, dan moet die methode `static` zijn.
 Let op dat je niet teveel `static` gebruikt; dit is immers een verdoken
 vorm om globale variabelen te maken.
 
-De \[\] operator bij reeksen
-============================
+# De \[\] operator bij reeksen
 
 In dit voorbeeld wordt gedemonstreerd hoe het mogelijk is om de index
 bij arrays te controleren. Het is mogelijk om binnen een klasse een
@@ -8005,11 +8070,9 @@ Het is ook zo dat de klasse `Reeks` alleen maar waarden van het type
 voor elk inhoudstype, is het beter om de klasse om te vormen tot een
 sjabloon.
 
-Sjablonen
-=========
+# Sjablonen
 
-Sjablonen bij klassen: algemene reeksen
----------------------------------------
+## Sjablonen bij klassen: algemene reeksen
 
 Het voorgaande voorbeeld was niet flexibel genoeg. Daarom wordt de
 klasse `Reeks` algemener gemaakt door sjablonen (*templates*) te
@@ -8104,8 +8167,7 @@ sjabloon geparametreerd wordt, genereert de compiler een nieuwe reeks
 regels broncode waarin telkens `T` vervangen wordt door het gekozen
 concrete type.
 
-Sjablonen bij functies
-----------------------
+## Sjablonen bij functies
 
 Je kan sjablonen (*templates*) ook toepassen bij functies. Hierdoor
 verkrijg je een functie die met een type geparametreerd is zodat de
@@ -8253,8 +8315,7 @@ array moet doorgegeven worden. Er worden 3 arrays aangemaakt: één met 7
 deze schrijfwijze is dat je geen extra paar ronde haken hoeft te
 gebruiken na de naam van de variabele om de parameter door te geven.
 
-Uitzonderingen
-==============
+# Uitzonderingen
 
 Uitzonderingen (*exceptions*) laten toe om fouten op een gepaste manier
 af te handelen. In de voorgaande voorbeelden wordt de arrayfout
@@ -8366,8 +8427,7 @@ Een andere recente toevoeging in C++11 is het woord `noexcept`. Hiermee
 wordt aangegeven dat een methode gegarandeerd geen uitzondering zal
 gooien.
 
-Een algemene reeks met uitzondering
-===================================
+# Een algemene reeks met uitzondering
 
 De algemene reeks is nu met uitzonderingen beveiligd. De foutklasse
 `Arrayfout` houdt de foutmelding in tekstvorm bij. Binnen
@@ -8458,8 +8518,7 @@ het signaleren van de fout. Het is de verantwoordelijkheid van de
 gebruiker van de hulpsoftware om te bepalen wat er moet gebeuren als er
 een bepaalde fout optreedt.
 
-De `Reeks` template met automatische uitbreiding
-================================================
+# De `Reeks` template met automatische uitbreiding
 
 Het volgende voorbeeld is het bestand `nvreeks.h`. De hier voorgestelde
 templateklasse is in staat om de capaciteit van de opslag te vergroten
@@ -8656,8 +8715,7 @@ containerklasse kan maken. Het voorbeeld dient alleen maar om uit te
 leggen hoe sjablonen in C++ werken. Voor productiewerk kan je beter de
 containerklassen van STL gebruiken, meer bepaald `vector`.
 
-Pointers opslaan in een container
-=================================
+# Pointers opslaan in een container
 
 In dit voorbeeld is voor het inhoudstype `T` gekozen voor de pointer
 `Info *`.
@@ -8736,8 +8794,7 @@ dezelfde als de Java-stijl waar verwijzingen naar objecten in variabelen
 worden bijgehouden. Java kent geen pointers maar maar het gedrag van
 objectvariabelen in Java lijkt wel op dat van pointers.
 
-Een container als klassevariabele
-=================================
+# Een container als klassevariabele
 
 In dit voorbeeld is de container een datamember van een klasse geworden.
 Het voordeel hiervan is dat je in de destructor van de klasse waarin de
@@ -8819,8 +8876,7 @@ container automatisch leeggemaakt. De destructor
 Hier doet `Reeks` dienst als 1-n relatie. Eén `Gegevens` object kan
 wijzen naar meerdere `Info` objecten.
 
-Het `string` type
-=================
+# Het `string` type
 
 In C worden teksten voorgesteld door arrays van `char`. Het nadeel van
 deze oplossing is de grote kans op geheugenfouten. Een C array wordt
@@ -8899,8 +8955,7 @@ verschillende stappen uitlegt wat de alternatieven zijn om doorheen de
 gegevens van een lijst te lopen. De hoofdstukken erna leggen de
 concepten van containers en algoritmes uit.
 
-Lijsten doorlopen
-=================
+# Lijsten doorlopen
 
 Voor we die containers bekijken, overlopen we een zestal C/C++
 voorbeelden die telkens een alternatief tonen om doorheen de gegevens
@@ -8909,8 +8964,7 @@ helpen om te begrijpen hoe STL achter de schermen werkt. Voor elk van
 deze alternatieven (behalve de laatste) wordt er standaard C of C++
 gebruikt.
 
-rechte haken `[]` bij een array
--------------------------------
+## rechte haken `[]` bij een array
 
 We starten met enkele eenvoudige voorbeelden die op verschillende wijzen
 een reeks of array doorlopen. Met deze voorbeelden zullen we beter zien
@@ -8936,8 +8990,7 @@ In het bovenstaande voorbeeld wordt het aantal elementen in de array
 berekend door de lengte van de array in bytes te delen door de breedte
 van een `int` in bytes. Ook dit is een typische C techniek.
 
-Met een pointer over een array lopen
-------------------------------------
+## Met een pointer over een array lopen
 
 In het volgende voorbeeld wordt een constante variabele gebruikt om het
 aantal elementen in de array vast te leggen. Nog een verschil is dat we
@@ -8960,8 +9013,7 @@ die geen deel meer uitmaakt van de array berekend.
        }
     }
 
-De bewerking uitvoeren via een pointer naar een functie
--------------------------------------------------------
+## De bewerking uitvoeren via een pointer naar een functie
 
 In versie 3 van het voorbeeld blijven we de pointer gebruiken als middel
 om alle elementen van de array te bereiken. Maar nu is de
@@ -9013,8 +9065,7 @@ uiteindelijk de notatie van de oproep:
 
     (*fu)(*p);
 
-De bewerking uitvoeren via een pointer naar een templatefunctie
----------------------------------------------------------------
+## De bewerking uitvoeren via een pointer naar een templatefunctie
 
 Hier volgt versie 4. Overal waar `int` voorkomt als type van de te
 verdubbelen waarde, is die naam vervangen door `T`. De betrokken
@@ -9045,8 +9096,7 @@ nu onafhankelijk van het type van de waarden in de array.
        f4b(tab, tab + n, verdubb);
     }
 
-De bewerking uitvoeren via een functieobject
---------------------------------------------
+## De bewerking uitvoeren via een functieobject
 
 In versie 5 wordt verdubbelfunctie vervangen door een functieobject. Wat
 is een functieobject? Dit is object van een klasse waarin naast
@@ -9088,8 +9138,7 @@ C++ equivalentie van de C functiepointer.
        f5b(tab, tab + n, Verdubbel<int>());
     }
 
-De bewerking uitvoeren via een pointer naar een lambdafunctie
--------------------------------------------------------------
+## De bewerking uitvoeren via een pointer naar een lambdafunctie
 
 Omdat het nogal omslachtig is om een volledig nieuwe klasse te moeten
 ontwerpen enkel voor het vastleggen van een bewerking, heeft de C++
@@ -9135,8 +9184,7 @@ van een bewerking op elk element van een reeks. Zowel het type van de
 elementen (template) en de bewerking (lambdafunctie) kunnen in het
 algoritme geparametreerd worden.
 
-Een `vector` voorbeeld
-======================
+# Een `vector` voorbeeld
 
 De eerste containerklasse van STL die aan bod komt is `vector`. Deze
 klasse maakt intern een lijst aan van allemaal elementen die
@@ -9291,11 +9339,9 @@ het wellicht beter om de `vector` te vervangen door `deque`. Deze
 container heeft gelijkaardige eigenschappen zoals `vector` maar het
 verwijderen van elementen is er wel sneller.
 
-De STL `list`
-=============
+# De STL `list`
 
-Een `list` voorbeeld
---------------------
+## Een `list` voorbeeld
 
 Hier is het voorgaande voorbeeld overgenomen en `vector` door `list`
 vervangen. De herhaling waarbij de rechte haken `[]` worden gebruikt
@@ -9368,8 +9414,7 @@ een zeker moment vrijgegeven zullen moeten worden. De STL container
 neemt dit niet voor zijn rekening. Je zal zelf nog een laatste keer door
 de lijst moeten lopen om de `Punt` één voor één vrij te geven.
 
-Geheugenlekken opsporen
------------------------
+## Geheugenlekken opsporen
 
 In dit voorbeeld wordt een ingenieus systeem toegepast om geheugenlekken
 op te sporen. Hiervoor moet wel een opgelegd ontwerppatroon gevolgd
@@ -9617,8 +9662,7 @@ klasse. Vermits je in C++ meervoudige erfenis kan toepassen, is dit voor
 elke eigen gemaakte klasse haalbaar. Ook is dit voorbeeld didactisch
 bedoeld; voor echte testen is `valgrind` het aangewezen hulpmiddel.
 
-De `set` container
-==================
+# De `set` container
 
 De `set` container slaat unieke waarden op. Dit betekent dat een
 welbepaalde waarde slechts éénmaal kan voorkomen in de verzameling. De
@@ -9702,8 +9746,7 @@ de declaratie van de `set` voorkomt: éénmaal als parameter van
 bovenstaande declaratie een `set` met naam `v` die de getallen in
 dalende volgorde zal bijhouden.
 
-De `map` container
-==================
+# De `map` container
 
 Met een `map` kan je een verzameling van key/value paren maken. Elk paar
 wordt in de map opgeslagen als een `pair` object. `pair` is een klasse
@@ -9737,8 +9780,7 @@ Bij een `map` kan je slechts één waarde voor een bepaalde sleutel
 opslaan. Als je alle paren van de `map` overloopt, gebeurt dat in
 stijgende volgorde van de sleutel (de eerste waarde).
 
-Algoritmes
-==========
+# Algoritmes
 
 Er zijn verschillende soorten algoritmes in STL. Het enige die hier
 besproken wordt, is `sort`. De meeste algoritmes zijn als een
@@ -9823,8 +9865,7 @@ heel handig als je containers en algoritmes wil parametreren met een
 bepaald gedrag. In dit deel worden o.a. de lambdafuncties, en hoe je die
 toepast bij algoritmes, uitgelegd.
 
-`auto` en `decltype`
-====================
+# `auto` en `decltype`
 
 Met het sleutelwoord `auto` kan je kortere declaraties van variabelen
 schrijven. Een variabele die met `auto` wordt gedeclareerd moet wel van
@@ -9900,8 +9941,7 @@ het volgende voorbeeld is het terugkeertype ook `int`.
 
 Het terugkeertype is hier hetzelfde type als dat van de parameter `g`.
 
-Constante uitdrukkingen
-=======================
+# Constante uitdrukkingen
 
 In het verleden, voor de opgang van C++, werden constanten gemaakt met
 `#define`. Deze regel wordt verwerkt met de preprocessor. Alle regels
@@ -9951,13 +9991,11 @@ Hier geeft het gebruik van `constexpr` de zekerheid dat de constante al
 bij de compilatie bekend is en dat ze kan gebruikt worden bijvoorbeeld
 als dimensie van een array.
 
-De `array` en `tuple` container
-===============================
+# De `array` en `tuple` container
 
 Beide klasse zijn in STL bijgevoegd sinds de C++11 standaard.
 
-De `array` container
---------------------
+## De `array` container
 
 De `array` klasse is een container die intern met C array voor de opslag
 zorgt. Deze array heeft een vaste afmeting die achteraf niet meer
@@ -10123,8 +10161,7 @@ deze berekening zien we dat de volledige benodigde geheugenruimte in de
 klassen zit en dat er geen extra heapruimte wordt gebruikt. Hiermee is
 bewezen dat een `array` geen heap gebruikt.
 
-De `tuple` container
---------------------
+## De `tuple` container
 
 Met een `tuple` kan je structuren van heterogene types maken zonder dat
 je hiervoor een `class` of `struct` moet maken. Een `tuple` moet je
@@ -10200,8 +10237,7 @@ wordt een nieuwe tuple gemaakt die het resultaat van de functie opvangt.
 
 Vooral het gebruik als returntype maakt de `tuple` aantrekkelijk.
 
-Smart pointers
-==============
+# Smart pointers
 
 Smart pointers bestaan al een tijdje in C++ en worden gebruikt om de
 kans op geheugenlekken te verkleinen. Wie dynamisch objecten maakt met
@@ -10251,8 +10287,7 @@ aangewezen object nog bestaat. Wat alle smart pointers als
 gemeenschappelijk kenmerk hebben is de automatische vrijgave van het
 aangewezen object.
 
-Verwijzingen met `unique_ptr`
------------------------------
+## Verwijzingen met `unique_ptr`
 
 Zoals de naam het zegt, heb je bij de `unique_ptr` nooit meer dan één
 pointer die een verwijzing naar het aangewezen object bijhoudt. De
@@ -10352,8 +10387,7 @@ Het grote voordeel is ontbreken van geheugenlekken. Wanneer we toch
 meerdere gelijktijdige kopieën willen beheren, moeten we overschakelen
 naar de `shared_ptr`.
 
-Verwijzingen met `shared_ptr`
------------------------------
+## Verwijzingen met `shared_ptr`
 
 Met `shared_ptr` verwijzingen kan je meerdere verwijzingen naar
 hetzelfde object bijhouden zonder dat je zelf de vrijgave moet doen.
@@ -10555,8 +10589,7 @@ Als je dit probleem wil oplossen, moet je gebruik maken van `weak_ptr`.
 Dit is een type verwijzing dat onverwacht de verwijzing naar het object
 kan verliezen.
 
-Verwijzingen met `weak_ptr`
----------------------------
+## Verwijzingen met `weak_ptr`
 
 De `weak_ptr` verwijzingen hebben de eigenschap dat het aangewezen
 object plotseling vrijgegeven wordt. De `weak_ptr` verwijzingen tellen
@@ -10672,8 +10705,7 @@ door `weak_ptr`'s te gebruiken. Het is dan handig om het klassediagramma
 te tekenen en de verwijzingen tussen de klassen als pijlen voor te
 stellen. Op deze manier kan je snel cirkels ontdekken.
 
-Rvalue referenties
-==================
+# Rvalue referenties
 
 Sinds C++11 is er naast het bestaande referentietype een nieuw
 referentietype bijgekomen. Het oude referentietype wordt nu *lvalue
@@ -11156,11 +11188,9 @@ programma's is dit type misschien niet noodzakelijk maar de kennis dat
 dit type bestaat, is belangrijk om te beseffen dat C++11 in staat is om
 de efficiëntie van programma's te verhogen.
 
-Lambdafuncties
-==============
+# Lambdafuncties
 
-De basis van lambdafuncties
----------------------------
+## De basis van lambdafuncties
 
 De lambdafuncties zijn een nieuwe toevoeging in C++11. Het grote
 verschil met pointers naar functies is dat lambdafuncties in staat zijn
@@ -11344,8 +11374,7 @@ die de C++11 standaard ondersteunt. Bij de GNU C++ compiler moet je de
 
     g++ --std=c++11 
 
-Lambdafuncties bij containers en algoritmes
--------------------------------------------
+## Lambdafuncties bij containers en algoritmes
 
 In dit hoofdstuk wordt getoond hoe je lambdafuncties kan inzetten bij
 STL containers en algoritmes. Dit is geen compleet overzicht van alle
@@ -11606,8 +11635,7 @@ Deze sectie is zeker niet compleet; niet alle algoritmes zijn hier met
 een voorbeeld beschreven. Je kan altijd de bovenstaande links gebruiken
 om verdere voorbeelden te zoeken.
 
-Lambdafuncties met expliciete capture
--------------------------------------
+## Lambdafuncties met expliciete capture
 
 In C++14 bestaat de mogelijkheid om expliciet aan te geven hoe
 variabelen in een capture gekoppeld worden. We geven een demonstratie
@@ -11699,8 +11727,7 @@ kan bereikt worden. Het is zelfs mogelijk om aan de rechterzijde van het
        ...
     };
 
-Multithreading
-==============
+# Multithreading
 
 Uiteraard was het al langer mogelijk om met C en C++ multitasking in te
 bouwen in programma's maar altijd waren hiervoor API's nodig die niet
@@ -11713,8 +11740,7 @@ Hier zijn een aantal voorbeelden gebaseerd op de volgende labotekst.
 
 -   <https://www.classes.cs.uchicago.edu/archive/2013/spring/12300-1/labs/lab6/>
 
-`vb1.cpp`, een eenvoudige thread
---------------------------------
+## `vb1.cpp`, een eenvoudige thread
 
 In dit voorbeeld wordt een thread gestart. Met `join()` kan je op het
 einde van de thread wachten. De naam van de uit te voeren functie wordt
@@ -11747,8 +11773,7 @@ gemakkelijk maar het nadeel is dan wel dat er race- en andere
 synchronisatieproblemen kunnen optreden als meerdere threads toegang
 hebben tot gemeenschappelijke bronnen, in dit geval het geheugen.
 
-`vb2.cpp`, gemeenschappelijk geheugen schrijven
------------------------------------------------
+## `vb2.cpp`, gemeenschappelijk geheugen schrijven
 
 Hier worden meerdere threads gestart die elk een globale variabele
 wijzigen. Dit is een gevaarlijk situatie omdat er race-effecten kunnen
@@ -11797,8 +11822,7 @@ de doorgegeven parameter. Dit resultaat wordt bij de globale variabele
 threads wordt uitgevoerd, kunnen er problemen ontstaan; het
 eindresultaat zal dan niet correct zijn.
 
-`vb3.cpp`, thread en mutex
---------------------------
+## `vb3.cpp`, thread en mutex
 
 Dit is de vorige versie uitgebreid met een *mutex*. Hierdoor wordt het
 race-effect vermeden. Elke thread doet eerst een `lock()` voordat de
@@ -11852,8 +11876,7 @@ gebied tussen `lock()` en `unlock()`. Om de werking efficiënter te
 krijgen is de berekening van het kwadraat buiten het bescshermde gebied
 geplaatst. Hierdoor is de bezettingstijd zo kort mogelijk.
 
-`vb4.cpp`, thread en atomic
----------------------------
+## `vb4.cpp`, thread en atomic
 
 Dit voorbeeld levert een andere oplossing voor hetzelfde probleem. De
 oplossing werkt niet met een mutex maar wel met een *atomic*. Ook hier
@@ -11896,8 +11919,7 @@ Bij deze oplossing zit de wederzijdse uitsluiting ingebouwd in de
 `operator+=()` bewerking van de `atomic` klasse. Het voordeel van deze
 oplossing dat enkel de declaratie van `accum` moet aangepast worden.
 
-`vb5.cpp`, async
-----------------
+## `vb5.cpp`, async
 
 Dit voorbeeld demonstreert het gebruik van `async()`. Hiermee kan je een
 bewerking, die een resultaat moet geven als een thread starten. Threads
@@ -11944,8 +11966,7 @@ oproep van `get()` al start voordat het resultaat in de thread
 teruggegeven wordt. In dat geval zal `get()` blokkeren en wachten tot
 het resultaat er is.
 
-`vb6.cpp`, conditievariabele
-----------------------------
+## `vb6.cpp`, conditievariabele
 
 Door een conditievariabele in te zetten kan een thread wachten op een
 bepaalde voorwaarde. In het voorbeeld wacht de reporter thread tot een
@@ -12025,8 +12046,7 @@ We hebben nu de werking van de `reporter` thread uitgelegd. De
 in wait zit. Je zou ook `cond_var.notify_all()` kunnen gebruiken maar
 dat is enkel nuttig als er meerdere threads in de waittoestand zitten.
 
-`vb7.cpp`, consumer-producer probleem
--------------------------------------
+## `vb7.cpp`, consumer-producer probleem
 
 Dit is een klassiek probleem dat met een conditievariabele is opgelost.
 De conditievariabele en mutex maken nu deel uit van de klasse `Goods`.
@@ -12132,8 +12152,7 @@ Door gebruik te maken van een klasse krijgen we een inkapseling van de
 synchronistatie. Dit maakt het geheel overzichtelijker; de globale
 variabelen zijn nu datamembers geworden.
 
-`vb8.cpp` promise-future
-------------------------
+## `vb8.cpp` promise-future
 
 In dit voorbeeld worden *promise* en *future* gedemonstreerd. Deze
 constructie kan je gebruiken om een resultaat van een asynchroon lopende
@@ -12169,8 +12188,7 @@ Broncode: [vb8.cpp](vb8.cpp)
        return 0;
     }
 
-`vb9.cpp` async en future
--------------------------
+## `vb9.cpp` async en future
 
 In dit voorbeeld is de promise/future verborgen in een *async*. Deze
 async geeft meteen een future terug om het resultaat op te halen.
@@ -12195,16 +12213,14 @@ Broncode: [vb9.cpp](vb9.cpp)
        return 0;
     }
 
-Coroutines in C++
-=================
+# Coroutines in C++
 
 De laatste standaard van C++ voorziet nog geen implementatie van
 coroutines. Daarom wordt hier de *Boost* bibliotheek gebruikt.
 Waarschijnlijk komen de Boost coroutines pas na C++17 standaard in C++
 terecht.
 
-Pull
-----
+## Pull
 
 Dit voorbeeld toont hoe de coroutine een reeks getallen genereert. Deze
 reeks wordt door `main()` overgenomen.
@@ -12261,8 +12277,7 @@ lus zou maken, komt het andere deel nooit meer aan bod. Bij threads is
 dat niet zo. Daarom spreekt men bij coroutines ook van coöperatieve
 multitasking.
 
-Push
-----
+## Push
 
 In dit voorbeeld wordt de richting omgekeerd: `main()` levert de woorden
 en de coroutine doet de verwerking ervan.
@@ -12329,8 +12344,7 @@ en de coroutine doet de verwerking ervan.
        std::copy(begin(words),end(words),begin(writer));
     }
 
-`Makefile`
-----------
+## `Makefile`
 
 Bij de compilatie moet je `c++11` vermelden, `c++14` werkt ook.
 
@@ -12348,8 +12362,7 @@ Bij de compilatie moet je `c++11` vermelden, `c++14` werkt ook.
     coroutine_push.o: coroutine_push.cpp
         g++ -c -g -std=c++11 coroutine_push.cpp
 
-Pull2
------
+## Pull2
 
 Dit is een eenvoudiger pull voorbeeld.
 
@@ -12383,8 +12396,7 @@ Dit is een eenvoudiger pull voorbeeld.
        }
     }
 
-Push2
------
+## Push2
 
 Dit is een eenvoudiger push voorbeeld.
 
@@ -12417,8 +12429,7 @@ Dit is een eenvoudiger push voorbeeld.
        }
     }
 
-Push som
---------
+## Push som
 
 En dit is de labooefening. Stuur eerst het aantal door en daarna de
 getallen volgens het aantal. De coroutine berekent de som.
@@ -12462,8 +12473,7 @@ getallen volgens het aantal. De coroutine berekent de som.
        std::cout << "einde\n";
     }
 
-Link
-----
+## Link
 
 -   <http://www.boost.org/doc/libs/1_63_0/libs/coroutine2/doc/html/coroutine2/coroutine/asymmetric.html>
 
@@ -12488,8 +12498,7 @@ Voor dit vak is Qt wel een voor de hand liggende keuze als GUI toolkit.
 Vermits de oefeningen in een Linux omgeving worden gemaakt en dat Qt er
 standaard is geïnstalleerd, maken deze keuze wel onvermijdelijk.
 
-Het kleinste Qt voorbeeld
-=========================
+# Het kleinste Qt voorbeeld
 
 Dit is een klein Qt voorbeeld met een `paint()` functie. Dit betekent
 dat het programma zelf kan beslissen wat er in een canvas moet getekend
@@ -12634,8 +12643,7 @@ naam van de map waarin het project staat. De tweede stap genereert de
 Door `qmake` te gebruiken hoef je zelf geen `Makefile` te maken. Als
 naam voor de gecompileerde applicatie wordt de naam van de map genomen.
 
-Figuren tonen in een Qt voorbeeld
-=================================
+# Figuren tonen in een Qt voorbeeld
 
 In dit voorbeeld wordt getoond hoe je een C++ model kan integreren in
 een Qt programma. Het model wordt in het volgende UML diagramma
@@ -12972,11 +12980,9 @@ getekend wordt.
 
     Start met een raster dat volledig wit is.
 
-Bibliografie
-============
+# Bibliografie
 
-Boeken
-------
+## Boeken
 
 Stroustrup2000 3rd edition Bjarne Stroustrup 2000 ISBN 0-20170-073-5
 Addison-Wesley Longman Publishing Co., Inc.
