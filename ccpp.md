@@ -178,9 +178,9 @@ programma's. Ze zijn bijna zonder verdere uitleg te begrijpen.
 
 We starten met een eerste voorbeeld:
 
+~~~~{.C}
 #include <stdio.h>
 
-~~~~{.C}
 int main() // een eenvoudig programma
 {
    int num;
