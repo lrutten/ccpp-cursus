@@ -241,7 +241,9 @@ type kan opslaan.
 
 Met een toekenning wordt een waarde in een variabele geplaatst.
 
+~~~~{.C}
 num = 1;
+~~~~
 
 Deze toekenningsopdracht plaatst de waarde 1 in de variabele.
 
@@ -287,21 +289,21 @@ overeenkomen met het aantal percentaanduidingen.
 En nog een voorbeeld:
 
 ~~~~{.C}
-    #include <stdio.h>
+#include <stdio.h>
 
-    void help()
-    {
-       printf("hier is hulp\n");
-    }
+void help()
+{
+   printf("hier is hulp\n");
+}
 
-    int main()
-    {
-       printf("ik heb hulp nodig\n");
-       help();
-       printf("dank u");
+int main()
+{
+   printf("ik heb hulp nodig\n");
+   help();
+   printf("dank u");
 
-       return 0;   
-    }
+   return 0;   
+}
 ~~~~
 
 In dit programma treffen we 2 functies[^5] aan: `main()` en `help()`.
