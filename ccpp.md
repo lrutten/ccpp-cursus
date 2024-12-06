@@ -397,7 +397,7 @@ In plaats van een enkele naam kunnen we ook meerdere namen bij een type
 plaatsten.
 
 ~~~~{.C}
-    int a,b,c;
+int a,b,c;
 ~~~~
 
 Variabelenamen bestaan uit maximum 63 letters en cijfers[^6]. Er mogen
@@ -421,18 +421,18 @@ Deze waarden gelden voor 32 bit Linux.
 Voorbeeld:
 
 ~~~~{.C}
-    int regendagen;
-    int uren,minuten;
+int regendagen;
+int uren,minuten;
 
-    uren = 5;
-    scanf("%d",&minuten);
+uren = 5;
+scanf("%d",&minuten);
 ~~~~
 
 Bij de declaratie zelf kunnen de variabelen geïnitialiseerd worden.
 
 ~~~~{.C}
-    int regendagen = 25;
-    int uren,minuten = 3;
+int regendagen = 25;
+int uren,minuten = 3;
 ~~~~
 
 `minuten` krijgt de waarde 3 in het laatste voorbeeld, `uren` wordt niet
@@ -457,14 +457,14 @@ hexadecimaal. In het voorbeeld wordt driemaal dezelfde waarde in een
 ander talstelsel op het scherm geplaatst.
 
 ~~~~{.C}
-    int main()
-    {
-       int x = 100;
+int main()
+{
+   int x = 100;
 
-       printf("dec = %d, octaal = %o, hex = %x\n",x,x,x);
+   printf("dec = %d, octaal = %o, hex = %x\n",x,x,x);
 
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 Door middel van adjectieven `short`, `long` en `unsigned` kan het bereik
@@ -512,7 +512,7 @@ Op een 32 bit Linux levert de `gcc` compiler de volgende mogelijkheden:
 Gehele getallen die eindigen met de letter `L` zijn `long` constanten:
 
 ~~~~{.C}
-    123L 045L 0x1234L
+123L 045L 0x1234L
 ~~~~
 
 Dit achtervoegsel mag bij decimale, octale en hexadecimale constanten
@@ -550,16 +550,16 @@ Bij schermuitgave moet precies aangeduid worden van welke soort elke
 variabele is en op welke wijze deze variabele op het scherm komt.
 
 ~~~~{.C}
-    int main()
-    {
-       unsigned un = 40000;
-       long ln = 2000000000;
-       unsigned long uln = 4000000000;
+int main()
+{
+   unsigned un = 40000;
+   long ln = 2000000000;
+   unsigned long uln = 4000000000;
 
-       printf("un: %u ln: %ld uln: %lu\n",un,ln,uln);
+   printf("un: %u ln: %ld uln: %lu\n",un,ln,uln);
        
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 We zien hier nieuwe formaataanduidingen. `%u` gebruiken we bij tekenloze
@@ -585,8 +585,8 @@ Variabelen van het `char` type worden gebruikt voor de opslag van
 tekens. We zien hier een voorbeeld van een declaratie:
 
 ~~~~{.C}
-    char letter,teken;
-    char cijfer;
+char letter,teken;
+char cijfer;
 ~~~~
 
 Dit type variabele gebruikt 1 byte geheugen en hierin wordt het teken
@@ -594,7 +594,7 @@ opgeslagen als een getal van -128 tot +127. Constanten van het `char`
 type worden tussen 2 aanhalingstekens genoteerd.
 
 ~~~~{.C}
-    'A' 'c' '0'
+'A' 'c' '0'
 ~~~~
 
 Tekens met een speciale betekenis worden met een backslash voorgesteld.
@@ -660,17 +660,20 @@ tussen de backslash en het getal geplaatst worden.
 code in octaal: `'\ddd'`
 
 ~~~~{.C}
-    '\123'
+'\123'
+~~~~
 
 code in hexadecimaal: `'\xddd'`
 
 ~~~~{.C}
-    '\x1b'
+'\x1b'
+~~~~
 
 We kunnen deze speciale tekens ook in strings toepassen.
 
 ~~~~{.C}
-    printf("\007wakker worden!\n");
+printf("\007wakker worden!\n");
+~~~~
 
 In dit voorbeeld sturen we de code voor het belsignaal naar het scherm.
 Het teken `'\n'` plaatst de cursor op het begin van de volgende regel.
@@ -678,16 +681,16 @@ Het teken `'\n'` plaatst de cursor op het begin van de volgende regel.
 `char` variabelen kunnen via in- en uitvoer verwerkt worden.
 
 ~~~~{.C}
-    int main()
-    {
-       char ch;
+int main()
+{
+   char ch;
 
-       printf("geef een teken\n");
-       scanf("%c", &ch);
-       printf("de code van %c is %d\n",ch,ch);
+   printf("geef een teken\n");
+   scanf("%c", &ch);
+   printf("de code van %c is %d\n",ch,ch);
 
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 In dit voorbeeld wordt `%c` gebruikt bij in- en uitvoer. Het ingelezen
@@ -726,9 +729,9 @@ op een 32 Linux platform.
 Deze types kunnen zo in een declaratie gebruikt worden:
 
 ~~~~{.C}
-    float pi     = 3.14159;
-    double planck = 6.63e-34;
-    long double getal;
+float pi     = 3.14159;
+double planck = 6.63e-34;
+long double getal;
 ~~~~
 
 Wanneer een getalconstante met een decimale punt of een exponent
@@ -738,11 +741,11 @@ suffix `l` of `L` wordt bijgevoegd dan is de constante van het type
 `long double`.
 
 ~~~~{.C}
-    123.45F
-    .556L
-    46.
-    12e-3F
-    15.5E20
+123.45F
+.556L
+46.
+12e-3F
+15.5E20
 ~~~~
 
 Deze constanten zijn allemaal van het reële type en kunnen aan een
@@ -752,9 +755,7 @@ Er zijn 3 mogelijkheden om `double` en `float` variabelen op het scherm
 te plaatsen:
 
 * `%f` gewone notatie
-
 * `%e` exponent notatie
-
 * `%g` gewone of exponent notatie
 
 Als we `%g` gebruiken wordt indien mogelijk het getal in de gewone
@@ -764,14 +765,14 @@ verschijnt het getal in de exponent notatie op het scherm.
 Voorbeeld:
 
 ~~~~{.C}
-    int main()
-    {
-       float getal = 32000.0;
+int main()
+{
+   float getal = 32000.0;
 
-       printf("%f is gelijk aan %e\n",getal,getal);
+   printf("%f is gelijk aan %e\n",getal,getal);
 
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 ### Het opsommingstype
@@ -779,11 +780,11 @@ Voorbeeld:
 Het opsommingstype laat toe zelf symbolen als waarde te definiëren.
 
 ~~~~{.C}
-    enum dagen =
-    {
-       zondag,maandag,dinsdag,woensdag,donderdag,
-       vrijdag,zaterdag
-    } vandaag, morgen;
+enum dagen =
+{
+   zondag,maandag,dinsdag,woensdag,donderdag,
+   vrijdag,zaterdag
+} vandaag, morgen;
 ~~~~
 
 De variabelen `vandaag` en `morgen` zijn van het type `enum dagen`. We
@@ -794,17 +795,17 @@ verder in het programma nog gebruikt worden voor de declaratie van
 andere variabelen.
 
 ~~~~{.C}
-    enum dagen gisteren;
-    gisteren = woensdag;
+enum dagen gisteren;
+gisteren = woensdag;
 ~~~~
 
 We kunnen ook zelf een waarde koppelen aan elk symbool.
 
 ~~~~{.C}
-    enum jaar
-    {
-       Guldensporen=1302, Bastille=1789, VanGogh=1890
-    } feit;
+enum jaar
+{
+   Guldensporen=1302, Bastille=1789, VanGogh=1890
+} feit;
 ~~~~
 
 ### De `sizeof()` functie
@@ -815,35 +816,35 @@ het type of de variabele die doorgegeven wordt. Het type van het
 resultaat is `int` (dit is afhankelijk van de implementatie).
 
 ~~~~{.C}
-    #include <stdio.h>
+#include <stdio.h>
 
-    int main()
-    {
-       printf("lengte char: %d\n",sizeof(char));
-       printf("lengte short int: %d\n",sizeof(short int));
-       printf("lengte int: %d\n",sizeof(int));
-       printf("lengte long int: %d\n",sizeof(long int));
-       printf("lengte long long int: %d\n",sizeof(long long int));
-       printf("lengte float: %d\n",sizeof(float));
-       printf("lengte double: %d\n",sizeof(double));
-       printf("lengte long double: %d",sizeof(long double));
-       
-       return 0;
-    }
+int main()
+{
+   printf("lengte char: %d\n",sizeof(char));
+   printf("lengte short int: %d\n",sizeof(short int));
+   printf("lengte int: %d\n",sizeof(int));
+   printf("lengte long int: %d\n",sizeof(long int));
+   printf("lengte long long int: %d\n",sizeof(long long int));
+   printf("lengte float: %d\n",sizeof(float));
+   printf("lengte double: %d\n",sizeof(double));
+   printf("lengte long double: %d",sizeof(long double));
+   
+   return 0;
+}
 ~~~~
 
 De output van het bovenstaande programma is verkregen op een 32 bit
 Linux machine.
 
 ~~~~{.C}
-    lengte char: 1
-    lengte short int: 2                                                                
-    lengte int: 4
-    lengte long int: 4
-    lengte long long int: 8
-    lengte float: 4
-    lengte double: 8
-    lengte long double: 12
+lengte char: 1
+lengte short int: 2                                                                
+lengte int: 4
+lengte long int: 4
+lengte long long int: 8
+lengte float: 4
+lengte double: 8
+lengte long double: 12
 ~~~~
 
 # Character strings, `#define`, `printf()`,`scanf()`
@@ -861,7 +862,7 @@ het scherm plaatsen, geven we een stringconstante door aan `printf()`.
 Met stringconstanten hebben we al kennis gemaakt.
 
 ~~~~{.C}
-    printf("abcde");
+printf("abcde");
 ~~~~
 
 De stringconstante `"abcde"` wordt gevormd door een tekst tussen dubbele
@@ -869,7 +870,7 @@ aanhalingstekens. In feite worden de afzonderlijke tekens als een `char`
 constante opgeslagen.
 
 ~~~~{.C}
-    'a' 'b' 'c' 'd' 'e' '\0'
+'a' 'b' 'c' 'd' 'e' '\0'
 ~~~~
 
 Als laatste teken wordt nog de code 0 bijgevoegd. Dit geeft het einde
@@ -883,37 +884,37 @@ beëindigen.
 Hier is een voorbeeld met strings en constanten.
 
 ~~~~{.C}
-    /* 
-      De menselijke densiteit in kg/m3 
-     */
-    #define DENSITEIT 999 
+/* 
+  De menselijke densiteit in kg/m3 
+ */
+#define DENSITEIT 999 
 
-    int main()
-    {
-       float gewicht,volume;
-       int grootte, letters;
-       char naam[40];
+int main()
+{
+   float gewicht,volume;
+   int grootte, letters;
+   char naam[40];
 
-       printf("geef je voornaam\n");
-       scanf("%s", naam);
-       printf("%s, geef je gewicht in kg\n",naam);
-       scanf("%f",&gewicht);
-       grootte = sizeof(naam);
-       letters = strlen(naam);
-       volume = gewicht/DENSITEIT;
-       printf("%s, je volume is %10.4f m3\n",naam,volume);
-       printf("je naam bestaat uit %d letters,\n",letters);
-       printf("en we hebben %d bytes nodig",grootte);
-       printf("om die op te slaan\n");
+   printf("geef je voornaam\n");
+   scanf("%s", naam);
+   printf("%s, geef je gewicht in kg\n",naam);
+   scanf("%f",&gewicht);
+   grootte = sizeof(naam);
+   letters = strlen(naam);
+   volume = gewicht/DENSITEIT;
+   printf("%s, je volume is %10.4f m3\n",naam,volume);
+   printf("je naam bestaat uit %d letters,\n",letters);
+   printf("en we hebben %d bytes nodig",grootte);
+   printf("om die op te slaan\n");
        
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 In dit programma treffen we een nieuw type variabele aan: array.
 
 ~~~~{.C}
-    char naam[40];
+char naam[40];
 ~~~~
 
 Dit is de declaratie van de variabele `naam`. Hierdoor wordt er
@@ -952,7 +953,7 @@ een constante die in de eerste programmaregel gedeclareerd wordt met
 koppelen aan een naam. Hiervoor dient de `#define` opdracht.
 
 ~~~~{.C}
-    #define NAAM tekst
+#define NAAM tekst
 ~~~~
 
 In de eerste fase van de vertaling worden alle namen die door `#define`
@@ -964,8 +965,8 @@ C programma ---&gt; preprocessor ---&gt; compiler
 Hier zijn nog enkele voorbeelden:
 
 ~~~~{.C}
-    #define PI 3.14159
-    #define DOLLAR '$'
+#define PI 3.14159
+#define DOLLAR '$'
 ~~~~
 
 De namen van deze constanten zijn in hoofdletters. Dit is niet
@@ -979,23 +980,23 @@ de bijbehorende tekst. Men kan zelfs een hele opdracht bij een naam
 onderbrengen.
 
 ~~~~{.C}
-    char slot[] = "tot ziens!";
+char slot[] = "tot ziens!";
 
-    int main()
-    {
-       char naam[50];
+int main()
+{
+   char naam[50];
 
-       printf("geef je naam\n");
-       scanf("%s", naam);
-       printf("hallo %s\n", naam);
-       printf("%d letters in %d bytes\n",
-       strlen(naam),sizeof(naam) );
-       printf("%d letters in %d bytes\n",
-       strlen(slot),sizeof(slot) );
-       printf("%s\n", slot);
+   printf("geef je naam\n");
+   scanf("%s", naam);
+   printf("hallo %s\n", naam);
+   printf("%d letters in %d bytes\n",
+   strlen(naam),sizeof(naam) );
+   printf("%d letters in %d bytes\n",
+   strlen(slot),sizeof(slot) );
+   printf("%s\n", slot);
        
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 Hiermee zien we dat de stringarray `slot` een extra byte nodig heeft
@@ -1308,21 +1309,21 @@ Het volgende programma toont hoe we met behulp van operatoren en
 uitdrukkingen een waarde kunnen toekennen aan een variabele.
 
 ~~~~{.C}
-    int main()
-    {
-       float celsius,fahrenheit;
+int main()
+{
+   float celsius,fahrenheit;
 
-       printf("Temperatuurtabel\n");
-       celsius = 0;
-       while(celsius <= 100)
-       {
-          fahrenheit = 9.0/5*celsius + 32;
-          printf("%4.1f celsius is %4.1f fahrenheit\n",
-          celsius, fahrenheit);
-          celsius = celsius + 5;
-       }
-       return 0;
-    }
+   printf("Temperatuurtabel\n");
+   celsius = 0;
+   while(celsius <= 100)
+   {
+      fahrenheit = 9.0/5*celsius + 32;
+      printf("%4.1f celsius is %4.1f fahrenheit\n",
+      celsius, fahrenheit);
+      celsius = celsius + 5;
+   }
+   return 0;
+}
 ~~~~
 
 Dit programma plaatst een omzettingstabel van graden Celsius naar graden
@@ -1349,7 +1350,7 @@ geplaatst. Er kan ook een waarde aan meerdere variabelen toegekend
 worden.
 
 ~~~~{.C}
-    a = b = c = 1;
+a = b = c = 1;
 ~~~~
 
 Bij deze toekenning wordt eerst `c` 1, daarna `b` en dan pas `a`.
@@ -1360,7 +1361,7 @@ Rekenkundige bewerkingen kunnen in uitdrukkingen toegepast worden. Als
 basisoperatoren hebben we `+`, `-`, `*` en `/`. In het voorbeeld
 
 ~~~~{.C}
-    (-b + c)/a
+(-b + c)/a
 ~~~~
 
 is `-` een unaire operator (werkt op 1 operand), `+` en `/` zijn binaire
@@ -1408,29 +1409,29 @@ voorstelt lang is.
 Hier zijn enkele voorbeelden:
 
 ~~~~{.C}
-    a++;
-    a--;
+a++;
+a--;
 ~~~~
 
 ofwel
 
 ~~~~{.C}
-    ++a;
-    --a;
+++a;
+--a;
 ~~~~
 
 De operatoren `++` en `--` doen hetzelfde als:
 
 ~~~~{.C}
-    a = a + 1;
-    a = a - 1;
+a = a + 1;
+a = a - 1;
 ~~~~
 
 Een `++` of `--` is soms moeilijk te interpreteren. Wat betekent de
 volgende uitdrukking?
 
 ~~~~{.C}
-    x*y++
+x*y++
 ~~~~
 
 Dit is hetzelfde als `x*(y++)` en dus niet `(x*y)++`. We zonderen `y++`
@@ -1441,10 +1442,10 @@ verhogen en geen uitdrukking.
 De `++` en `--` operatoren kunnen voor of na de variabele geplaatst
 worden. Dit betekent vooraf of achteraf verhogen.
 
--   postfix notatie
+- postfix notatie
 
 ~~~~{.C}
-        i = 0; j = i++;/* j wordt 0 */
+    i = 0; j = i++;/* j wordt 0 */
 ~~~~
 
     eerst waarde gebruiken en daarna verhogen
@@ -1452,7 +1453,7 @@ worden. Dit betekent vooraf of achteraf verhogen.
 -   prefix notatie
 
 ~~~~{.C}
-        m = 0; n = ++m;/* n wordt 1 */
+    m = 0; n = ++m;/* n wordt 1 */
 ~~~~
 
     eerst verhogen en daarna waarde gebruiken
@@ -1461,17 +1462,17 @@ In het volgende voorbeeld wordt de verhoging van i in de voorwaarde
 ingebouwd.
 
 ~~~~{.C}
-    int main()
-    {
-       int i = 0;
+int main()
+{
+   int i = 0;
 
-       while(++i < 20)
-       {
-          printf("%d\n", i );
-       }
+   while(++i < 20)
+   {
+      printf("%d\n", i );
+   }
 
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 Deze notatie levert kortere programma's op. Het nadeel is dat deze
@@ -1510,19 +1511,19 @@ twee operands.
 Om bit 3 in een variabele op 1 te zetten schrijven we:
 
 ~~~~{.C}
-    x = x | 010;
+x = x | 010;
 ~~~~
 
 Om dezelfde bit terug op 0 te zetten schrijven we:
 
 ~~~~{.C}
-    x = x & 0177767;
+x = x & 0177767;
 ~~~~
 
 ofwel
 
 ~~~~{.C}
-    x = x & ~010;
+x = x & ~010;
 ~~~~
 
 De eerste vorm kan enkel gebruikt worden voor een variabele van het type
@@ -1569,19 +1570,19 @@ Ook deze notaties leveren kortere programma's op.
 Let wel op de prioriteiten:
 
 ~~~~{.C}
-    a *= b + 2;
+a *= b + 2;
 ~~~~
 
 betekent
 
 ~~~~{.C}
-    a = a * (b + 2);
+a = a * (b + 2);
 ~~~~
 
 en niet
 
 ~~~~{.C}
-    a = a * b + 2;
+a = a * b + 2;
 ~~~~
 
 ## Uitdrukkingen
@@ -1592,12 +1593,12 @@ worden door de bewerkingen volgens hun prioriteiten uit te rekenen.
 Enkele voorbeelden:
 
 ~~~~{.C}
-    5
-    -125
-    1 + 1
-    a = 3
-    b = ++b % 4
-    c > 3.14
+5
+-125
+1 + 1
+a = 3
+b = ++b % 4
+c > 3.14
 ~~~~
 
 Ook de toekenning stelt een waarde voor. Dit is de waarde die aan de
@@ -1609,21 +1610,21 @@ Opdrachten zijn de bouwstenen van een programma. Elke opdracht voert een
 actie uit.
 
 ~~~~{.C}
-    /* de som van de eerste 20 getallen */
-    int main()
-    {
-       int teller, som;/* declaratie*/
+/* de som van de eerste 20 getallen */
+int main()
+{
+   int teller, som;/* declaratie*/
 
-       teller = 0;     /* toekenning*/
-       som = 0;        /*   idem*/
-       while (teller++ < 20)     /* while*/
-       {
-          som = som + teller;    /*   opdracht*/
-       }
-       printf("som = %d\n",som); /* functie oproep*/
+   teller = 0;     /* toekenning*/
+   som = 0;        /*   idem*/
+   while (teller++ < 20)     /* while*/
+   {
+      som = som + teller;    /*   opdracht*/
+   }
+   printf("som = %d\n",som); /* functie oproep*/
 
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 Elke opdracht wordt met een `;` afgesloten.
@@ -1632,20 +1633,20 @@ Een samengestelde opdracht bestaat uit meerdere opdrachten tussen `{` en
 `}`.
 
 ~~~~{.C}
-    while (i++ < 100)
-       j = i * i; // alleen deze opdracht in herhaling
-    printf("%d\n",j);
+while (i++ < 100)
+   j = i * i; // alleen deze opdracht in herhaling
+printf("%d\n",j);
 ~~~~
 
 In het vorige voorbeeld hoort er bij de `while` slechts een opdracht. In
 het volgend voorbeeld plaatsen we twee opdrachten bij de `while`.
 
 ~~~~{.C}
-    while (i++ < 100)
-    {
-       j = i * i;
-       printf("%d\n",j);
-    }
+while (i++ < 100)
+{
+   j = i * i;
+   printf("%d\n",j);
+}
 ~~~~
 
 Probeer altijd de accoladen `{` en `}` te gebruiken bij de
@@ -1669,10 +1670,10 @@ problemen geven, wanneer de waarde niet in het bereik past. In dit geval
 kan de compiler een waarschuwing geven.
 
 ~~~~{.C}
-    char k;
+char k;
 
-    k = 200 + 321;
-    k = 2.3e45;
+k = 200 + 321;
+k = 2.3e45;
 ~~~~
 
 ### cast bewerking
@@ -1680,10 +1681,10 @@ kan de compiler een waarschuwing geven.
 Dit is een geforceerde omzetting.
 
 ~~~~{.C}
-    int m;
+int m;
 
-    m = 1.6 + 1.5;/* geeft 3 */
-    m = (int) 1.6 + (int) 1.5;/* geeft 2 */
+m = 1.6 + 1.5;/* geeft 3 */
+m = (int) 1.6 + (int) 1.5;/* geeft 2 */
 ~~~~
 
 Het type wordt tussen haken voor de om te zetten waarde geplaatst. De
@@ -1701,27 +1702,27 @@ In het volgende voorbeeld wordt de `if` gebruikt om na te gaan of een
 getal oneven is.
 
 ~~~~{.C}
-    void main()
-    {
-       int teller = 0;
-       int som    = 0;
+void main()
+{
+   int teller = 0;
+   int som    = 0;
 
-       while (teller++ < 100)
-       {
-          if ( teller % 2 != 0)
-          {
-             som += teller;
-          }
-       }
-       printf("de som van de oneven getallen is %d\n",som);
-    }
+   while (teller++ < 100)
+   {
+      if ( teller % 2 != 0)
+      {
+         som += teller;
+      }
+   }
+   printf("de som van de oneven getallen is %d\n",som);
+}
 ~~~~
 
 De algemene vorm is:
 
 ~~~~{.C}
-    if (uitdrukking)
-       opdracht
+if (uitdrukking)
+   opdracht
 ~~~~
 
 Het resultaat van de uitdrukking bepaalt of de opdracht al dan niet
@@ -1735,67 +1736,67 @@ Het is mogelijk om meerdere opdrachten bij een `if` te plaatsen. We
 plaatsen de opdrachten tussen accolades.
 
 ~~~~{.C}
-    if (a == b)
-    {
-       printf("twee gelijke getallen:\n");
-       printf("%d en %d\n", a, b);
-    }
+if (a == b)
+{
+   printf("twee gelijke getallen:\n");
+   printf("%d en %d\n", a, b);
+}
 ~~~~
 
 We kunnen ook een opdracht laten uitvoeren als de voorwaarde niet waar
 is. Dit wordt aangegeven door het woord `else`.
 
 ~~~~{.C}
-    if (a == 0)
-       printf("het getal is nul\n");
-    else
-       printf("het getal is niet nul\n");
+if (a == 0)
+   printf("het getal is nul\n");
+else
+   printf("het getal is niet nul\n");
 ~~~~
 
 De algemene vorm is:
 
 ~~~~{.C}
-    if (uitdrukking)
-       opdracht
-    else
-       opdracht
+if (uitdrukking)
+   opdracht
+else
+   opdracht
 ~~~~
 
 Als opdracht bij een `if` of `else` kan een andere `if` gebruikt worden.
 
 ~~~~{.C}
-    if (a == 0)
-    {
-       printf("het getal is nul\n");
-    }
-    else
-    {
-       if (a > 0)
-       {
-          printf("het getal is positief\n");
-       }
-       else
-       {
-          printf("het getal is negatief\n");
-       }
-    }
+if (a == 0)
+{
+   printf("het getal is nul\n");
+}
+else
+{
+   if (a > 0)
+   {
+      printf("het getal is positief\n");
+   }
+   else
+   {
+      printf("het getal is negatief\n");
+   }
+}
 ~~~~
 
 Indien we veel `if` opdrachten met elkaar combineren, kunnen we de
 insprong beter weglaten.
 
 ~~~~{.C}
-    if (bedrag < 1000)
-       korting = 0;
-    else if (bedrag < 2500)
-       korting = 2;
-    else if (bedrag < 5000)
-       korting = 5;
-    else if (bedrag < 10000)
-       korting = 8;
-    else
-       korting = 10;
-    bedrag *= 1 - korting/100;
+if (bedrag < 1000)
+   korting = 0;
+else if (bedrag < 2500)
+   korting = 2;
+else if (bedrag < 5000)
+   korting = 5;
+else if (bedrag < 10000)
+   korting = 8;
+else
+   korting = 10;
+bedrag *= 1 - korting/100;
 ~~~~
 
 De structuur in het vorige voorbeelden komt in praktijk veel voor. In
@@ -1805,11 +1806,11 @@ Wanneer een `else` volgt na meerdere `if` opdrachten, kunnen we ons
 afvragen bij welke `if` deze `else` hoort.
 
 ~~~~{.C}
-    if (getal > 5)
-    if (getal < 10)
-       printf("goed\n");
-    else
-       printf("slecht\n");
+if (getal > 5)
+if (getal < 10)
+   printf("goed\n");
+else
+   printf("slecht\n");
 ~~~~
 
 Bij dit programma zouden we kunnen denken dat de `else` bij de eerste
@@ -1819,41 +1820,41 @@ de laatste `else`-loze `if`.
 Dit is de verbeterde versie:
 
 ~~~~{.C}
-    if (getal > 5)
-       if (getal < 10)
-          printf("goed\n");
-       else
-          printf("slecht\n");
+if (getal > 5)
+   if (getal < 10)
+      printf("goed\n");
+   else
+      printf("slecht\n");
 ~~~~
 
 Als we de `else` toch bij de eerste `if` willen plaatsen, dan kan dit
 zo:
 
 ~~~~{.C}
-    if (getal > 5)
-    {
-       if (getal < 10)
-          printf("goed\n");
-    }
-    else
-       printf("slecht\n");
+if (getal > 5)
+{
+   if (getal < 10)
+      printf("goed\n");
+}
+else
+   printf("slecht\n");
 ~~~~
 
 Opnieuw moeten we stellen dat het beter is om de accolades altijd te
 schrijven. Het laatste voorbeeld wordt dan uiteindelijk:
 
 ~~~~{.C}
-    if (getal > 5)
-    {
-       if (getal < 10)
-       {
-          printf("goed\n");
-       }
-    }
-    else
-    {
-       printf("slecht\n");
-    }
+if (getal > 5)
+{
+   if (getal < 10)
+   {
+      printf("goed\n");
+   }
+}
+else
+{
+   printf("slecht\n");
+}
 ~~~~
 
 ## Relationele operatoren
@@ -1862,12 +1863,12 @@ Met deze operatoren kunnen we uitdrukkingen schrijven die vergelijkingen
 uitvoeren.
 
 ~~~~{.C}
-    <  kleiner dan
-    >  groter dan
-    <= kleiner dan of gelijk aan
-    >= groter dan of gelijk aan
-    == gelijk aan
-    != verschillend van
+<  kleiner dan
+>  groter dan
+<= kleiner dan of gelijk aan
+>= groter dan of gelijk aan
+== gelijk aan
+!= verschillend van
 ~~~~
 
 Alleen waarden van de types `(un)signed char`, `short`, `int`, `long`,
@@ -1878,7 +1879,7 @@ resultaat is van het type `int`. C kent dus geen boolse constanten of
 variabelen. We kunnen dit uitproberen met de volgende opdracht.
 
 ~~~~{.C}
-    printf("waar %d, niet waar %d\n", 5>1, 0!=0);
+printf("waar %d, niet waar %d\n", 5>1, 0!=0);
 ~~~~
 
 Dit voorbeeld toont dat we gehele getallen krijgen als resultaat van
@@ -1896,7 +1897,7 @@ Deze twee operatoren worden verschillend geschreven omdat ze
 tegelijkertijd bij een `if` gebruikt kunnen worden.
 
 ~~~~{.C}
-    if ((a = b) == 0)
+if ((a = b) == 0)
 ~~~~
 
 Deze opdracht plaatst eerst de inhoud van `b` in `a` en test dan of deze
@@ -1904,16 +1905,13 @@ waarde gelijk is aan 0. `a = b` staat tussen haken omdat de toekenning
 een lagere prioriteit heeft dan de gelijkheidsvergelijking. Soms wordt
 de vergelijking verschillend van 0 weggelaten.
 
-`if (aanwezigen != 0)` is identiek aan
-
-`if (aanwezigen)`
+`if (aanwezigen != 0)` is identiek aan `if (aanwezigen).`
 
 De laatste notatie die wel korter is, is niet aan te bevelen wegens de
 slechte leesbaarheid.
 
 De prioriteit van relationele operatoren is lager dan die van
-rekenkundige operatoren. De uitdrukking `a + b ==
-                0` kunnen we dus als `(a + b) == 0` interpreteren.
+rekenkundige operatoren. De uitdrukking `a + b == 0` kunnen we dus als `(a + b) == 0` interpreteren.
 
 ## Logische operatoren
 
@@ -1921,21 +1919,21 @@ Met deze operatoren kunnen we meerdere voorwaarden logisch met elkaar
 koppelen.
 
 ~~~~{.C}
-    // tel kleine letters in een regel
-    int main()
-    {
-       char t;
-       int aantal = 0;
+// tel kleine letters in een regel
+int main()
+{
+   char t;
+   int aantal = 0;
 
-       while ( ( t=getchar() ) != '\n')
-       {
-          if (t >= 'a' && t <= 'z')
-             aantal++;
-       }
-       printf("het aantal is %d\n", aantal);
+   while ( ( t=getchar() ) != '\n')
+   {
+      if (t >= 'a' && t <= 'z')
+         aantal++;
+   }
+   printf("het aantal is %d\n", aantal);
        
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 De uitdrukking bij de `while` kent eerst een waarde toe aan de variabele
@@ -1953,27 +1951,25 @@ de twee voorwaarden waar zijn.
 Er zijn drie logische operatoren:
 
 -   `&&` logische en
-
 -   `||` logische of
-
 -   `!` logische niet
 
 De werking is:
 
 ~~~~{.C}
-    uitdr1 && uitdr2
+uitdr1 && uitdr2
 ~~~~
 
 waar als beide uitdr1 en uitdr2 waar zijn
 
 ~~~~{.C}
-    uitdr1 || uitdr2
+uitdr1 || uitdr2
 ~~~~
 
 waar als ofwel een van de twee ofwel beide uitdrukkingen waar zijn
 
 ~~~~{.C}
-    ! uitdr1
+! uitdr1
 ~~~~
 
 waar als uitdr1 niet waar is
@@ -1984,19 +1980,19 @@ operatoren worden uitgevoerd op de getalwaarden. Bij deze laatsten is
 het alleen van belang of getal nul is of niet.
 
 ~~~~{.C}
-    4 && 2  // geeft 1
-    4 & 2  // geeft 0
-    4 || 2 // geeft 1
-    4 | 2 // geeft 6
+4 && 2  // geeft 1
+4 & 2  // geeft 0
+4 || 2 // geeft 1
+4 | 2 // geeft 6
 ~~~~
 
 Hier zijn nog enkele voorbeelden:
 
 ~~~~{.C}
-    6 > 1 && 10 == 5    // niet waar
-    6 > 1 || 10 == 5   //waar
-    !(3 > 9)  // waar
-    of 3 <= 9
+6 > 1 && 10 == 5    // niet waar
+6 > 1 || 10 == 5   //waar
+!(3 > 9)  // waar
+of 3 <= 9
 ~~~~
 
 De volgorde van evaluatie is steeds van links naar rechts. Als het
@@ -2004,17 +2000,17 @@ eindresultaat al vastligt na evaluatie van de eerste uitdrukking, wordt
 de tweede niet meer geëvalueerd.
 
 ~~~~{.C}
-    0 && uitdr2  // geeft altijd 0
-    1 || uitdr2  // geeft altijd 1
+0 && uitdr2  // geeft altijd 0
+1 || uitdr2  // geeft altijd 1
 ~~~~
 
 Deze kortsluitmogelijkheid is handig om bepaalde fouten te vermijden.
 
 ~~~~{.C}
-    if ( n != 0 && 12/n == 2)
-    {
-       printf("n is 5 of 6\n");
-    }
+if ( n != 0 && 12/n == 2)
+{
+   printf("n is 5 of 6\n");
+}
 ~~~~
 
 Hier wordt de deling door `n` enkel uitgevoerd als `n` verschillend is
@@ -2022,9 +2018,8 @@ van 0.
 
 De prioriteiten van logische operatoren zijn:
 
-`!` heeft een hogere prioriteit dan && en `||`
-
-`&&` heeft een hogere prioriteit dan `||` .
+* `!` heeft een hogere prioriteit dan && en `||`
+* `&&` heeft een hogere prioriteit dan `||` .
 
 De logische operatoren hebben een lagere prioriteit dan relationele
 operatoren.
@@ -2037,7 +2032,7 @@ relationele operatoren. Hierdoor moeten we in de volgende voorwaarde
 haken gebruiken.
 
 ~~~~{.C}
-    (x & 0x8) == 0
+(x & 0x8) == 0
 ~~~~
 
 Deze voorwaarde test of bit 3 nul is.
@@ -2048,20 +2043,20 @@ Deze opdracht maakt een keuze uit twee waarden afhankelijk van een
 voorwaarde.
 
 ~~~~{.C}
-    a = (b < 0) ? -b : b;
+a = (b < 0) ? -b : b;
 ~~~~
 
 We kunnen dit ook met een `if` schrijven.
 
 ~~~~{.C}
-    if (b < 0)
-    {
-       a = -b;
-    }
-    else
-    {
-       a = b;
-    }
+if (b < 0)
+{
+   a = -b;
+}
+else
+{
+   a = b;
+}
 ~~~~
 
 De conditionele uitdrukking bestaat uit:
@@ -2075,7 +2070,7 @@ Tenslotte nog een voorbeeld waarbij twee getallen in stijgende volgorde
 op het scherm geplaatst worden.
 
 ~~~~{.C}
-    printf("%d,%d\n", (a > b) ? b : a, (a > b) ? a : b );
+printf("%d,%d\n", (a > b) ? b : a, (a > b) ? a : b );
 ~~~~
 
 ## Meerdere keuzemogelijkheden: `switch`
@@ -2084,38 +2079,38 @@ Wanneer we een keuze uit meerdere mogelijkheden maken, dan is de
 `switch` opdracht de beste oplossing.
 
 ~~~~{.C}
-    int main()
-    {
-       char letter;
+int main()
+{
+   char letter;
 
-       printf("geef een letter en ik geef je een vogelnaam\n");
-       while ( ( letter=getchar() ) != '#')
-       {
-          switch (letter)
-          {
-             case 'a' :
-                printf("aalscholver, phalacrocorax carbo\n");
-                break;
-             case 'b' :
-                printf("bontbekplevier, charadrius hiaticula\n");
-                break;
-             case 'c' :
-                printf("citroensijs, serinus citrinella\n");
-                break;
-             case 'd' :
-                printf("duinpieper, anthus campestris\n");
-                break;
-             case 'e' :
-                printf("eidereend, somateria mollissima\n");
-                break;
-             default :
-                printf("vandaag alleen van a to e\n");
-                break;
-          }
-       }
+   printf("geef een letter en ik geef je een vogelnaam\n");
+   while ( ( letter=getchar() ) != '#')
+   {
+      switch (letter)
+      {
+         case 'a' :
+            printf("aalscholver, phalacrocorax carbo\n");
+            break;
+         case 'b' :
+            printf("bontbekplevier, charadrius hiaticula\n");
+            break;
+         case 'c' :
+            printf("citroensijs, serinus citrinella\n");
+            break;
+         case 'd' :
+            printf("duinpieper, anthus campestris\n");
+            break;
+         case 'e' :
+            printf("eidereend, somateria mollissima\n");
+            break;
+         default :
+            printf("vandaag alleen van a to e\n");
+            break;
+      }
+   }
        
-       return 0;
-    }
+   return 0;
+}
 ~~~~
 
 Dit programma leest een letter in en voert dan een actie uit die bij
@@ -2130,18 +2125,18 @@ voor elke ingegeven letter een `printf()` opdracht uitgevoerd.
 Dit is de algemene vorm:
 
 ~~~~{.C}
-    switch ( uitdrukking )
-    {
-       case constante1 :
-          opdrachten;
-          break;
-       case constante2 :
-          opdrachten;
-          break;
-       default :
-          opdrachten;
-       break;
-    }
+switch ( uitdrukking )
+{
+   case constante1 :
+      opdrachten;
+      break;
+   case constante2 :
+      opdrachten;
+      break;
+   default :
+      opdrachten;
+   break;
+}
 ~~~~
 
 De uitdrukking en constanten moeten van type `int` of `char` zijn. We
@@ -2150,10 +2145,10 @@ kunnen hier dus geen `float` of `double` gebruiken. De opdrachten
 van dezelfde opdracht voor 2 constanten:
 
 ~~~~{.C}
-    case 'F' :
-    case 'f' :
-       printf("fitis, phylloscopus trochilus\n");
-       break;
+case 'F' :
+case 'f' :
+   printf("fitis, phylloscopus trochilus\n");
+   break;
 ~~~~
 
 Als `default` met bijbehorende opdracht en `break` weggelaten worden,
